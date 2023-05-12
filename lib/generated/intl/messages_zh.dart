@@ -24,9 +24,13 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "login": MessageLookupByLibrary.simpleMessage("登录"),
         "mobile_number": MessageLookupByLibrary.simpleMessage("手机号码"),
+        "next": MessageLookupByLibrary.simpleMessage("下一步"),
         "referral_code": MessageLookupByLibrary.simpleMessage("推荐码"),
         "register": MessageLookupByLibrary.simpleMessage("注册"),
         "send_code": MessageLookupByLibrary.simpleMessage("发送验证码"),
+        "step_msg1":
+            MessageLookupByLibrary.simpleMessage("为了与我们有一个安全的旅程\n请验证您的身份以完成注册"),
+        "step_msg4": MessageLookupByLibrary.simpleMessage("身份验证成功\n你准备好了!"),
         "verification_code": MessageLookupByLibrary.simpleMessage("验证码")
       };
 }

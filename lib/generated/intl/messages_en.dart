@@ -24,9 +24,14 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "login": MessageLookupByLibrary.simpleMessage("Log in"),
         "mobile_number": MessageLookupByLibrary.simpleMessage("Mobile Number"),
+        "next": MessageLookupByLibrary.simpleMessage("Next"),
         "referral_code": MessageLookupByLibrary.simpleMessage("Referral Code"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "send_code": MessageLookupByLibrary.simpleMessage("Send Code"),
+        "step_msg1": MessageLookupByLibrary.simpleMessage(
+            "To have a secure and safe journey with us\nPlease verify your identity to complete the registration"),
+        "step_msg4": MessageLookupByLibrary.simpleMessage(
+            "Proof of identity verification successful\nYou’re ready to go!"),
         "verification_code":
             MessageLookupByLibrary.simpleMessage("Verification Code")
       };

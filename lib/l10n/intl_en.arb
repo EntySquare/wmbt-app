@@ -4,5 +4,8 @@
     "verification_code": "Verification Code",
     "referral_code": "Referral Code",
     "send_code": "Send Code",
+    "step_msg1": "To have a secure and safe journey with us\nPlease verify your identity to complete the registration",
+    "step_msg4": "Proof of identity verification successful\nYou’re ready to go!",
+    "next": "Next",
     "register":"Register"
 }

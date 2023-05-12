@@ -193,17 +193,6 @@ class _LoginBoxState extends State<LoginBox> {
                   ),
                 ),
 
-                // 主题切换按钮
-                // IconButton(
-                //     onPressed:
-                // () async => {
-                //           // await tokenStorage.deleteToken(),
-                //           isDark_on
-                //               ? context.read<ThemeCubit>().switchToLightTheme()
-                //               : context.read<ThemeCubit>().switchToDarkTheme(),
-                //           // AppNavigator.push(Routes.home)
-                //         },
-                //     icon: Image.asset("assets/images/login_switch_on.png")),
               ],
             ),
           ),
@@ -254,11 +243,13 @@ class _LoginBoxState extends State<LoginBox> {
                     Container(
                       height: 49,
                       width: double.infinity,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           gradient: LinearGradient(
                               colors: [Color(0xff9A4DFF), Color(0xffF600DD)],
                               begin: Alignment.centerLeft,
-                              end: Alignment.centerRight)),
+                              end: Alignment.centerRight),
+                          borderRadius: BorderRadius.all(Radius.circular(8)),
+                      ),
                       alignment: Alignment.bottomCenter,
                       child: TextButton(
                         onPressed: () {},
