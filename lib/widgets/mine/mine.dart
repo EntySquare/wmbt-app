@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:wmbt/widgets/setI10n/WmbtDropdownButton.dart';
 
-class Home extends StatefulWidget {
-  const Home({super.key});
+class Mine extends StatefulWidget {
+  const Mine({super.key});
 
   @override
-  State<Home> createState() => _HomeState();
+  State<Mine> createState() => _MineState();
 }
 
-class _HomeState extends State<Home> {
+class _MineState extends State<Mine> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("主页"),),
+      appBar: AppBar(title: Text("我的"),),
     );
   }
 }
