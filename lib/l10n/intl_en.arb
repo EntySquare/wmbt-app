@@ -1,6 +1,8 @@
 {
-    "login":"log in",
+    "login":"Log in",
     "mobile_number":"Mobile Number",
     "verification_code": "Verification Code",
+    "referral_code": "Referral Code",
+    "send_code": "Send Code",
     "register":"Register"
 }

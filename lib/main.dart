@@ -8,7 +8,7 @@ import 'package:wmbt/data/repositories/Language_provider';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   LanguageProvider languageProvider =
-      LanguageProvider(Locale('en', 'US')); // 默认语言
+      LanguageProvider(const Locale('en', 'US')); // 默认语言
   Locale savedLocale = await languageProvider.getLocaleFromPrefs();
   languageProvider.setLocale(savedLocale);
   runApp(
