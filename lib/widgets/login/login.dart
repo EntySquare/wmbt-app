@@ -144,7 +144,7 @@ class _LoginBoxState extends State<LoginBox> {
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
                 ),
                 Container(
-                  height: 22,
+                  height: 24,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
                       gradient: LinearGradient(colors: [
@@ -153,9 +153,9 @@ class _LoginBoxState extends State<LoginBox> {
                       ], begin: Alignment.topRight, end: Alignment.bottomLeft)),
                   child: FlutterSwitch(
                     width: 40.0,
-                    height: 22.0,
+                    height: 24.0,
                     valueFontSize: 12.0,
-                    toggleSize: 22.0,
+                    toggleSize: 20.0,
                     value: isDark_on,
                     borderRadius: 30.0,
                     padding: 2.0,
