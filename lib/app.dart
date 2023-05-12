@@ -40,9 +40,9 @@ class WmbtApp extends StatelessWidget {
               onGenerateRoute: AppNavigator.onGenerateRoute,
               supportedLocales: S.delegate.supportedLocales,
               theme: theme,
-              // home: Login(),
+               home: Login(),
               // home: Home(),
-              home: MainMenu(),
+              //home: MainMenu(),
             )));
   }
 }
