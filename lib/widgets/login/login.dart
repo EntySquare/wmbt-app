@@ -28,7 +28,7 @@ class _LoginState extends State<Login> {
               return LoginBox();
             } else {
               return LoginBox(
-                LoginBoxBgc: "",
+                LoginBoxBgc: "assets/images/bgc_lingh.png",
               );
             }
           } else {
@@ -46,7 +46,7 @@ class LoginBox extends StatefulWidget {
   // 背景图片
   String LoginBoxBgc;
 
-  LoginBox({super.key, this.LoginBoxBgc = "assets/images/bac_login_dark.png"});
+  LoginBox({super.key, this.LoginBoxBgc = "assets/images/bgc_login_dark.png"});
 
   @override
   State<LoginBox> createState() => _LoginBoxState();
