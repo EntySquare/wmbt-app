@@ -1,3 +1,6 @@
 {
-    "login":"log in"
-  }
+    "login":"log in",
+    "mobile_number":"Mobile Number",
+    "verification_code": "Verification Code",
+    "register":"Register"
+}

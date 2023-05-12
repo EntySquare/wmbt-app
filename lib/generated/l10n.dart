@@ -59,6 +59,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Mobile Number`
+  String get mobile_number {
+    return Intl.message(
+      'Mobile Number',
+      name: 'mobile_number',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Verification Code`
+  String get verification_code {
+    return Intl.message(
+      'Verification Code',
+      name: 'verification_code',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Register`
+  String get register {
+    return Intl.message(
+      'Register',
+      name: 'register',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

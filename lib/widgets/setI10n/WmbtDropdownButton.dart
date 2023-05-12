@@ -2,6 +2,7 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:wmbt/common/style/common_style.dart';
 import 'package:wmbt/data/repositories/Language_provider';
 import 'package:wmbt/generated/l10n.dart';
 
@@ -34,7 +35,7 @@ class _SwitchLanguageState extends State<SwitchLanguage> {
         .getCurrentLanguageString());
     return DropdownButton2<Locale>(
       dropdownStyleData: DropdownStyleData(
-        width: 140,
+        width: 130,
         padding: const EdgeInsets.symmetric(vertical: 6),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
@@ -49,17 +50,19 @@ class _SwitchLanguageState extends State<SwitchLanguage> {
         return DropdownMenuItem<Locale>(
           value: locale,
           child: Container(
+            //padding: EdgeInsets.only(right: 20),
             child: Row(children: [
               Image.asset(
-                "assets/images/login_img1.png",
-                width: 30,
-                height: 30,
+                "assets/images/login_america.png",
+                width: 17,
+                height: 17,
               ),
+              SizedBox(width: 5,),
               Text(locale.languageCode == 'zh'
                   ? '简体中文'
                   : locale.languageCode == 'en'
                       ? 'English'
-                      : '未知'),
+                      : '未知',style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14),),
             ]),
           ),
         );

@@ -15,6 +15,7 @@ class WmbtApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ThemeCubit, ThemeData>(
         builder: ((context, theme) => MaterialApp(
+            debugShowCheckedModeBanner: false,
             title: 'Wmbt',
             locale: Provider.of<LanguageProvider>(context).currentLocale,
             onGenerateTitle: (context) {
