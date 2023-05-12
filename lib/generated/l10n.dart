@@ -50,10 +50,10 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `log in`
+  /// `Log in`
   String get login {
     return Intl.message(
-      'log in',
+      'Log in',
       name: 'login',
       desc: '',
       args: [],
@@ -75,6 +75,26 @@ class S {
     return Intl.message(
       'Verification Code',
       name: 'verification_code',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Referral Code`
+  String get referral_code {
+    return Intl.message(
+      'Referral Code',
+      name: 'referral_code',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send Code`
+  String get send_code {
+    return Intl.message(
+      'Send Code',
+      name: 'send_code',
       desc: '',
       args: [],
     );

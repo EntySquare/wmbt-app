@@ -1,6 +1,8 @@
 {
-  "login":"登陆",
+  "login":"登录",
   "mobile_number":"手机号码",
   "verification_code": "验证码",
+  "referral_code": "推荐码",
+  "send_code": "发送验证码",
   "register":"注册"
 }

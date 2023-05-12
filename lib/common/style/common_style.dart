@@ -85,6 +85,10 @@ class CommonStyle {
 
   static const TextStyle text_12_white =
       TextStyle(color: Color(0xFFffffff), fontSize: 12, fontWeight: FontWeight.w400, fontFamily: 'FangZhengHeiTiFanTi');
+
+  static const TextStyle text_12_white_w400 =
+  TextStyle(color: Color(0xFFffffff), fontSize: 12, fontWeight: FontWeight.w400, fontFamily: 'FangZhengHeiTiFanTi');
+
   static const TextStyle text_14_white = TextStyle(color: Color(0xFFffffff), fontSize: 14);
 
   static const TextStyle text_14_white_w600 = TextStyle(color: Color(0xFFffffff), fontSize: 14, fontWeight: FontWeight.w600);

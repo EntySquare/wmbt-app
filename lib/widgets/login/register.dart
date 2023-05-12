@@ -1,17 +1,12 @@
-// ignore_for_file: must_be_immutable, non_constant_identifier_names
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wmbt/common/style/common_style.dart';
-import 'package:wmbt/data/repositories/Theme_cubit.dart';
-import 'package:wmbt/generated/l10n.dart';
 
-// import 'package:wmbt/routes.dart';
-import 'package:wmbt/utils/auth.dart';
-import 'package:wmbt/widgets/login/register.dart';
-import 'package:wmbt/widgets/setI10n/WmbtDropdownButton.dart';
-
+import '../../common/style/common_style.dart';
+import '../../data/repositories/Theme_cubit.dart';
+import '../../generated/l10n.dart';
+import '../../utils/auth.dart';
 import '../../utils/gradient_text.dart';
+import '../setI10n/WmbtDropdownButton.dart';
 
 class InputItem {
   final int id;
@@ -21,19 +16,19 @@ class InputItem {
 
   InputItem(
       {required this.id,
-      required this.hint_text,
-      required this.controller,
-      required this.node});
+        required this.hint_text,
+        required this.controller,
+        required this.node});
 }
 
-class Login extends StatefulWidget {
-  const Login({super.key});
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({Key? key}) : super(key: key);
 
   @override
-  State<Login> createState() => _LoginState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginState extends State<Login> {
+class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     TokenStorage tokenStorage = TokenStorage();
@@ -49,7 +44,8 @@ class _LoginState extends State<Login> {
                 LoginBoxBgc: "assets/images/bgc_lingh.png",
               );
             }
-          } else {
+          }
+          else {
             return const Center(
               child: CircularProgressIndicator(),
             );
@@ -78,9 +74,11 @@ class _LoginBoxState extends State<LoginBox> {
 
   final mobileController = TextEditingController();
   final pswController = TextEditingController();
+  final referralController = TextEditingController();
 
   FocusNode emailNode = FocusNode();
   FocusNode pswNode = FocusNode();
+  FocusNode referralNode = FocusNode();
 
   @override
   void initState() {
@@ -88,14 +86,20 @@ class _LoginBoxState extends State<LoginBox> {
     input_item.addAll([
       InputItem(
           id: 1,
+          hint_text: "referral_code",
+          controller: referralController,
+          node: referralNode),
+      InputItem(
+          id: 2,
           hint_text: "mobile_number",
           controller: mobileController,
           node: emailNode),
       InputItem(
-          id: 2,
+          id: 3,
           hint_text: "verification_code",
           controller: pswController,
           node: pswNode),
+
     ]);
   }
 
@@ -139,27 +143,24 @@ class _LoginBoxState extends State<LoginBox> {
               children: [
                 InkWell(
                   onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context){
-                      return RegisterPage();
-                    }));
+                    Navigator.of(context).pop();
                   },
                   child: GradientText(
-                    text: S.of(context).register,
+                    text: S.of(context).login,
                     gradient: LinearGradient(
                         colors: [Color(0xff9A4DFF), Color(0xffF600DD)]),
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
                   ),
                 ),
-
                 // 主题切换按钮
                 IconButton(
                     onPressed: () async => {
-                          // await tokenStorage.deleteToken(),
-                          isDark_on
-                              ? context.read<ThemeCubit>().switchToLightTheme()
-                              : context.read<ThemeCubit>().switchToDarkTheme(),
-                          // AppNavigator.push(Routes.home)
-                        },
+                      // await tokenStorage.deleteToken(),
+                      isDark_on
+                          ? context.read<ThemeCubit>().switchToLightTheme()
+                          : context.read<ThemeCubit>().switchToDarkTheme(),
+                      // AppNavigator.push(Routes.home)
+                    },
                     icon: Image.asset("assets/images/login_switch_on.png")),
               ],
             ),
@@ -220,7 +221,7 @@ class _LoginBoxState extends State<LoginBox> {
                       child: TextButton(
                         onPressed: () {},
                         child: Text(
-                          S.of(context).login,
+                          S.of(context).register,
                           style: CommonStyle.text_14_white,
                         ),
                       ),
@@ -246,7 +247,7 @@ class _LoginBoxState extends State<LoginBox> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              padding: EdgeInsets.only(left: 15,),
+              padding: EdgeInsets.only(left: 15, right: 15),
               height: 37,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(8)),
@@ -274,18 +275,16 @@ class _LoginBoxState extends State<LoginBox> {
                       decoration: InputDecoration(
                         isCollapsed: true,
                         contentPadding:
-                            EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+                        EdgeInsets.symmetric(horizontal: 0, vertical: 0),
                         hintText: item.node.hasFocus
                             ? ''
-                            : (index == 0
-                                ? S.of(context).mobile_number
-                                : S.of(context).verification_code),
+                            : getHintText(context,item.id),
                         hintStyle:
-                            TextStyle(color: isDark_on?Color(0xFFCACDDA):Colors.black.withOpacity(0.5), fontSize: 14),
+                        TextStyle(color: isDark_on?Color(0xFFCACDDA):Colors.black.withOpacity(0.5), fontSize: 14),
                         prefixText:
-                            item.node.hasFocus || item.controller.text != ''
-                                ? ''
-                                : '',
+                        item.node.hasFocus || item.controller.text != ''
+                            ? ''
+                            : '',
                         prefixStyle: CommonStyle.text_12_black,
 
                         fillColor: Colors.transparent,
@@ -296,24 +295,68 @@ class _LoginBoxState extends State<LoginBox> {
                       ),
                     ),
                   ),
-                  index==0?Container(
-                    width: 80,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [Color(0xff9A4DFF),Color(0xffF600DD)],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                      ),
-                      borderRadius: BorderRadius.all(Radius.circular(8)),
-                    ),
-                    height: double.infinity,
-                    alignment: Alignment.center,
-                    child: Text(S.of(context).send_code, style: CommonStyle.text_12_white_w400,),
-                  ):Container()
                 ],
               ),
-            )
+            ),
+            getInputRightWidget(item.id)
           ],
         ));
+  }
+
+  String getHintText(context, index){
+    String hint_text = "";
+    switch (index){
+      case 1:
+        hint_text = S.of(context).referral_code;
+        break;
+      case 2:
+        hint_text = S.of(context).mobile_number;
+        break;
+      case 3:
+        hint_text = S.of(context).verification_code;
+        break;
+    }
+
+    return hint_text;
+  }
+
+  Widget getInputRightWidget (index){
+
+    switch (index){
+      case 1: // 二维码
+        return Container(
+          width: 80,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Color(0xff9A4DFF),Color(0xffF600DD)],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+            borderRadius: BorderRadius.all(Radius.circular(8)),
+          ),
+          height: double.infinity,
+          alignment: Alignment.center,
+          child: Text(S.of(context).send_code, style: CommonStyle.text_12_white_w400,),
+        );
+        break;
+      case 2: // 发送验证码
+        Container(
+          width: 80,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Color(0xff9A4DFF),Color(0xffF600DD)],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+            borderRadius: BorderRadius.all(Radius.circular(8)),
+          ),
+          height: double.infinity,
+          alignment: Alignment.center,
+          child: Text(S.of(context).send_code, style: CommonStyle.text_12_white_w400,),
+        );
+        break;
+    }
+
+    return Container();
   }
 }
