@@ -6,7 +6,7 @@ import 'package:flutter_switch/flutter_switch.dart';
 import 'package:wmbt/common/style/common_style.dart';
 import 'package:wmbt/data/repositories/Theme_cubit.dart';
 import 'package:wmbt/generated/l10n.dart';
-
+import 'dart:math' as math;
 // import 'package:wmbt/routes.dart';
 import 'package:wmbt/utils/auth.dart';
 import 'package:wmbt/widgets/setI10n/WmbtDropdownButton.dart';
@@ -143,33 +143,45 @@ class _LoginBoxState extends State<LoginBox> {
                       colors: [Color(0xff9A4DFF), Color(0xffF600DD)]),
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
                 ),
-                FlutterSwitch(
-                  width: 40.0,
-                  height: 21.0,
-                  valueFontSize: 12.0,
-                  toggleSize: 18.0,
-                  value: isDark_on,
-                  borderRadius: 30.0,
-                  padding: 2.0,
-                  activeIcon: const Icon(
-                    Icons.nightlight_round_rounded,
-                    color: Color.fromRGBO(179, 64, 231, 1),
-                    size: 18,
+                Container(
+                  height: 22,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      gradient: LinearGradient(colors: [
+                        Color.fromARGB(127, 154, 77, 200),
+                        Color.fromARGB(183, 246, 0, 200)
+                      ], begin: Alignment.topRight, end: Alignment.bottomLeft)),
+                  child: FlutterSwitch(
+                    width: 40.0,
+                    height: 22.0,
+                    valueFontSize: 12.0,
+                    toggleSize: 22.0,
+                    value: isDark_on,
+                    borderRadius: 30.0,
+                    padding: 2.0,
+                    activeIcon: Transform.rotate(
+                      angle: math.pi * 1.2, // 旋转角度，以弧度表示。这里旋转180度
+                      child: const Icon(
+                        Icons.nightlight_round,
+                        color: Color.fromRGBO(179, 64, 231, 1),
+                        size: 18,
+                      ),
+                    ),
+                    inactiveIcon: const Icon(
+                      Icons.wb_sunny_outlined,
+                      color: Color.fromRGBO(179, 64, 231, 1),
+                      size: 18,
+                    ),
+                    activeColor: Color.fromRGBO(179, 64, 231, 0),
+                    inactiveColor: Color.fromRGBO(179, 64, 231, 0),
+                    activeToggleColor: Colors.black,
+                    showOnOff: false,
+                    onToggle: (val) {
+                      isDark_on
+                          ? context.read<ThemeCubit>().switchToLightTheme()
+                          : context.read<ThemeCubit>().switchToDarkTheme();
+                    },
                   ),
-                  activeColor: Color.fromRGBO(179, 64, 231, 1),
-                  inactiveColor: Color.fromRGBO(179, 64, 231, 1),
-                  activeToggleColor: Colors.black,
-                  inactiveIcon: const Icon(
-                    Icons.wb_sunny_outlined,
-                    color: Color.fromRGBO(179, 64, 231, 1),
-                    size: 18,
-                  ),
-                  showOnOff: false,
-                  onToggle: (val) {
-                    isDark_on
-                        ? context.read<ThemeCubit>().switchToLightTheme()
-                        : context.read<ThemeCubit>().switchToDarkTheme();
-                  },
                 ),
                 // 主题切换按钮
                 // IconButton(
