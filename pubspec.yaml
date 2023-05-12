@@ -14,6 +14,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   bloc: ^8.0.1
+  flutter_switch: ^0.3.2
   flutter_bloc: ^8.0.1
   provider: ^6.0.1
   cupertino_icons: ^1.0.2

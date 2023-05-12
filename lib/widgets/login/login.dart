@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_switch/flutter_switch.dart';
 import 'package:wmbt/common/style/common_style.dart';
 import 'package:wmbt/data/repositories/Theme_cubit.dart';
 import 'package:wmbt/generated/l10n.dart';
@@ -142,16 +143,45 @@ class _LoginBoxState extends State<LoginBox> {
                       colors: [Color(0xff9A4DFF), Color(0xffF600DD)]),
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
                 ),
+                FlutterSwitch(
+                  width: 40.0,
+                  height: 21.0,
+                  valueFontSize: 12.0,
+                  toggleSize: 18.0,
+                  value: isDark_on,
+                  borderRadius: 30.0,
+                  padding: 2.0,
+                  activeIcon: const Icon(
+                    Icons.nightlight_round_rounded,
+                    color: Color.fromRGBO(179, 64, 231, 1),
+                    size: 18,
+                  ),
+                  activeColor: Color.fromRGBO(179, 64, 231, 1),
+                  inactiveColor: Color.fromRGBO(179, 64, 231, 1),
+                  activeToggleColor: Colors.black,
+                  inactiveIcon: const Icon(
+                    Icons.wb_sunny_outlined,
+                    color: Color.fromRGBO(179, 64, 231, 1),
+                    size: 18,
+                  ),
+                  showOnOff: false,
+                  onToggle: (val) {
+                    isDark_on
+                        ? context.read<ThemeCubit>().switchToLightTheme()
+                        : context.read<ThemeCubit>().switchToDarkTheme();
+                  },
+                ),
                 // 主题切换按钮
-                IconButton(
-                    onPressed: () async => {
-                          // await tokenStorage.deleteToken(),
-                          isDark_on
-                              ? context.read<ThemeCubit>().switchToLightTheme()
-                              : context.read<ThemeCubit>().switchToDarkTheme(),
-                          // AppNavigator.push(Routes.home)
-                        },
-                    icon: Image.asset("assets/images/login_switch_on.png")),
+                // IconButton(
+                //     onPressed:
+                // () async => {
+                //           // await tokenStorage.deleteToken(),
+                //           isDark_on
+                //               ? context.read<ThemeCubit>().switchToLightTheme()
+                //               : context.read<ThemeCubit>().switchToDarkTheme(),
+                //           // AppNavigator.push(Routes.home)
+                //         },
+                //     icon: Image.asset("assets/images/login_switch_on.png")),
               ],
             ),
           ),
@@ -241,7 +271,7 @@ class _LoginBoxState extends State<LoginBox> {
               height: 37,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(8)),
-                  color: isDark_on?Color(0xff221d29):Color(0xffffffff),
+                  color: isDark_on ? Color(0xff221d29) : Color(0xffffffff),
                   border: Border.all(color: Color(0xff9A4DFF), width: 0.5)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -249,7 +279,9 @@ class _LoginBoxState extends State<LoginBox> {
                   Container(
                     width: 200,
                     child: TextFormField(
-                      style: CommonStyle.text_14_colorF6F6FB_w400_opacity50,
+                      style: isDark_on
+                          ? CommonStyle.text_15_white
+                          : CommonStyle.text_15_black,
                       controller: item.controller,
                       keyboardType: TextInputType.number,
                       minLines: 1,
@@ -271,8 +303,11 @@ class _LoginBoxState extends State<LoginBox> {
                             : (index == 0
                                 ? S.of(context).mobile_number
                                 : S.of(context).verification_code),
-                        hintStyle:
-                            TextStyle(color: isDark_on?Color(0xFFCACDDA):Colors.black.withOpacity(0.5), fontSize: 14),
+                        hintStyle: TextStyle(
+                            color: isDark_on
+                                ? Color(0xFFCACDDA)
+                                : Colors.black.withOpacity(0.5),
+                            fontSize: 14),
                         prefixText:
                             item.node.hasFocus || item.controller.text != ''
                                 ? ''
