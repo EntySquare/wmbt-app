@@ -7,7 +7,7 @@
   "next": "下一步",
   "register":"注册",
   "step_msg1": "为了与我们有一个安全的旅程\n请验证您的身份以完成注册",
-  "step_msg4": "身份验证成功\n你准备好了!"
+  "step_msg4": "身份验证成功\n你准备好了!",
 
   "activities": "详情",
   "total_balance": "总金额",

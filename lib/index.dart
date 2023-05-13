@@ -1,137 +1,90 @@
-import 'package:flutter/cupertino.dart';
+import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:get/get.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:wmbt/widgets/home/home.dart';
 import 'package:wmbt/widgets/mine/mine.dart';
 
-class MainMenu extends StatefulWidget {
-  const MainMenu({super.key});
+class Index extends StatefulWidget {
+  Index({super.key});
 
   @override
-  State<MainMenu> createState() => _MainMenuState();
+  State<Index> createState() => _IndexState();
 }
 
-class _MainMenuState extends State<MainMenu> {
-  final PersistentTabController _controller = PersistentTabController(initialIndex: 0);
+class _IndexState extends State<Index> with SingleTickerProviderStateMixin {
+  int _currentIndex = 0;
+  TabController? _tabController;
+  final List<Widget> _pages = [
+    Home(),
+    Mine(),
+  ];
 
   @override
-  Widget build(final BuildContext context) {
-    return PersistentTabView(
-      context,
-      controller: _controller,
-      screens: _buildScreens(),
-      items: _navBarsItems(),
-      confineInSafeArea: true,
-      // padding: NavBarPadding.only(bottom: 20),
-      backgroundColor: Color(0xFF211d28),
-      // bottomScreenMargin: 10,
-      // Default is Colors.white.
-      handleAndroidBackButtonPress: true,
-      // Default is true.
-      resizeToAvoidBottomInset: true,
-      // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
-      stateManagement: true,
-      // Default is true.
-      hideNavigationBarWhenKeyboardShows: true,
-
-      // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
-      decoration: NavBarDecoration(
-        borderRadius: BorderRadius.circular(0.0),
-        // colorBehindNavBar: Colors.white,
-
-        boxShadow: [
-          BoxShadow(offset: Offset(0, 5), color: Color(0xFF5c3067), blurRadius: 40, spreadRadius: 10),
-        ],
-        // gradient: LinearGradient(
-        //   colors: [Color(0xFF3a2940), Color(0xFF211d28)],
-        //   begin: Alignment.topCenter,
-        //   end: Alignment.bottomCenter,
-        //   stops: [.01, 1],
-        // ),
-      ),
-      popAllScreensOnTapOfSelectedTab: true,
-      popActionScreens: PopActionScreensType.all,
-      onItemSelected: (index) {
-        setState(() {});
-      },
-      itemAnimationProperties: ItemAnimationProperties(
-        // Navigation Bar's items animation properties.
-        duration: Duration(milliseconds: 200),
-        curve: Curves.ease,
-      ),
-      screenTransitionAnimation: ScreenTransitionAnimation(
-        // Screen transition animation on change of selected tab.
-        animateTabTransition: true,
-        curve: Curves.ease,
-        duration: Duration(milliseconds: 200),
-      ),
-      navBarStyle: NavBarStyle.style12,
-    );
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _tabController = TabController(length: 2, vsync: this);
   }
 
-  List<Widget> _buildScreens() => [
-        Home(),
-        // Mine(),
-        Mine(),
-      ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: _pages.elementAt(_currentIndex),
+      bottomNavigationBar: ConvexAppBar(
+            controller: _tabController,
+            color: Colors.black38,
+            style: TabStyle.react,
+            items: [
+              TabItem(
+                icon: Image.asset(
+                  'assets/images/inactive_bottom_icon1.png',
+                ),
+                activeIcon: Image.asset(
+                  'assets/images/active_bottom_icon1.png',
+                ),
+              ),
+              TabItem(
+                icon: Image.asset(
+                  'assets/images/inactive_bottom_icon2.png',
+                ),
+                activeIcon: Image.asset(
+                  'assets/images/active_bottom_icon2.png',
+                ),
+              ),
+            ],
+            initialActiveIndex: 0,
+            height: Get.height * .07,
+            backgroundColor: Color(0xFF211d28),
+            top: 0,
+            elevation: 20,
+            shadowColor: Color(0xFF8927a5),
+            onTap: (int i) {
+              setState(() {
+                _currentIndex = i;
+              });
+            },
+          ),
 
-  List<PersistentBottomNavBarItem> _navBarsItems() => [
-        PersistentBottomNavBarItem(
-          // icon: _controller.index == 0
-          //     ? Image.asset("assets/images/active_bottom_icon1.png")
-          //     : Image.asset("assets/images/inactive_bottom_icon1.png"),
-          icon: Image.asset(
-            "assets/images/active_bottom_icon1.png",
-            width: 30,
-            height: 30,
-          ),
-          inactiveIcon: Image.asset(
-            "assets/images/inactive_bottom_icon1.png",
-            width: 30,
-            height: 30,
-          ),
-          iconSize: 30,
-          // activeColorPrimary: CupertinoColors.activeBlue,
-          // inactiveColorPrimary: CupertinoColors.systemGrey,
-        ),
-        // PersistentBottomNavBarItem(
-        //     // icon: ClipOval(
-        //     //   child: Container(
-        //     //     decoration: BoxDecoration(
-        //     //       gradient: LinearGradient(
-        //     //         colors: [Color(0xFF9A4DFF).withOpacity(1), Color(0xFFF600DD)],
-        //     //         begin: Alignment.topCenter,
-        //     //         end: Alignment.bottomCenter,
-        //     //       ),
-        //     //       // border: Border.all(color: Color(0xFFab3bb0),width: 1)
-        //     //     ),
-        //     //     child: Image.asset("assets/images/qrcode.png"),
-        //     //   ),
-        //     // ),
-        //     contentPadding: 0,
-        //     icon: Container(
-        //       decoration: BoxDecoration(
-        //         gradient: LinearGradient(
-        //           colors: [Color(0xFF9A4DFF).withOpacity(1), Color(0xFFF600DD)],
-        //           begin: Alignment.topCenter,
-        //           end: Alignment.bottomCenter,
-        //         ),
-        //         // border: Border.all(color: Color(0xFFab3bb0),width: 1)
-        //       ),
-        //       child: Image.asset("assets/images/qrcode.png"),
-        //     ),
-        //     activeColorPrimary: Colors.transparent),
-        PersistentBottomNavBarItem(
-          icon: Image.asset(
-            "assets/images/active_bottom_icon2.png",
-            width: 30,
-            height: 30,
-          ),
-          inactiveIcon: Image.asset(
-            "assets/images/inactive_bottom_icon2.png",
-            width: 30,
-            height: 30,
-          ),
-        ),
-      ];
+      // bottomNavigationBar: BottomNavigationBar(
+      //     fixedColor: Colors.red,
+      //     // 选中的颜色
+      //     iconSize: 25,
+      //     currentIndex: _currentIndex,
+      //     type: BottomNavigationBarType.fixed,
+      //     // 如果底部有4个或者以上时，需要设置
+      //     onTap: (index) {
+      //       setState(() {
+      //         _currentIndex = index;
+      //       });
+      //     },
+      //     items: const [
+      //       BottomNavigationBarItem(icon: Icon(Icons.home), label: "首页"),
+      //       BottomNavigationBarItem(
+      //           icon: Icon(Icons.heart_broken), label: "市场"),
+      //       BottomNavigationBarItem(icon: Icon(Icons.home), label: "收藏"),
+      //       BottomNavigationBarItem(icon: Icon(Icons.settings), label: "我的"),
+      //     ]),
+    );
+  }
 }
