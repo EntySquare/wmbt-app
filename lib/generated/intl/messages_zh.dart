@@ -34,7 +34,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "total_balance": MessageLookupByLibrary.simpleMessage("总金额"),
         "unlocked": MessageLookupByLibrary.simpleMessage("已解锁"),
         "verification_code": MessageLookupByLibrary.simpleMessage("验证码"),
-        "withdraw": MessageLookupByLibrary.simpleMessage("提现")
+        "withdraw": MessageLookupByLibrary.simpleMessage("提现"),
         "step_msg1":
             MessageLookupByLibrary.simpleMessage("为了与我们有一个安全的旅程\n请验证您的身份以完成注册"),
         "step_msg4": MessageLookupByLibrary.simpleMessage("身份验证成功\n你准备好了!"),
