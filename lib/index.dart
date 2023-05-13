@@ -33,39 +33,45 @@ class _MainMenuState extends State<MainMenu> {
       stateManagement: true,
       // Default is true.
       hideNavigationBarWhenKeyboardShows: true,
+
       // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
       decoration: NavBarDecoration(
         borderRadius: BorderRadius.circular(0.0),
-        colorBehindNavBar: Colors.white,
+        // colorBehindNavBar: Colors.white,
+
         boxShadow: [
-          BoxShadow(offset: Offset(0, 5), color: Color(0xFF5c3067), blurRadius: 40, spreadRadius: 20),
+          BoxShadow(offset: Offset(0, 5), color: Color(0xFF5c3067), blurRadius: 40, spreadRadius: 10),
         ],
+        // gradient: LinearGradient(
+        //   colors: [Color(0xFF3a2940), Color(0xFF211d28)],
+        //   begin: Alignment.topCenter,
+        //   end: Alignment.bottomCenter,
+        //   stops: [.01, 1],
+        // ),
       ),
       popAllScreensOnTapOfSelectedTab: true,
       popActionScreens: PopActionScreensType.all,
       onItemSelected: (index) {
-        setState(() {
-          print(index);
-        });
+        setState(() {});
       },
-      itemAnimationProperties: const ItemAnimationProperties(
+      itemAnimationProperties: ItemAnimationProperties(
         // Navigation Bar's items animation properties.
         duration: Duration(milliseconds: 200),
         curve: Curves.ease,
       ),
-      screenTransitionAnimation: const ScreenTransitionAnimation(
+      screenTransitionAnimation: ScreenTransitionAnimation(
         // Screen transition animation on change of selected tab.
         animateTabTransition: true,
         curve: Curves.ease,
         duration: Duration(milliseconds: 200),
       ),
-      navBarStyle: NavBarStyle.style15,
+      navBarStyle: NavBarStyle.style12,
     );
   }
 
   List<Widget> _buildScreens() => [
         Home(),
-        Mine(),
+        // Mine(),
         Mine(),
       ];
 
@@ -88,21 +94,33 @@ class _MainMenuState extends State<MainMenu> {
           // activeColorPrimary: CupertinoColors.activeBlue,
           // inactiveColorPrimary: CupertinoColors.systemGrey,
         ),
-        PersistentBottomNavBarItem(
-            icon: ClipOval(
-              child: Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [Color(0xFF9A4DFF).withOpacity(1), Color(0xFFF600DD)],
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                  ),
-                  // border: Border.all(color: Color(0xFFab3bb0),width: 1)
-                ),
-                child: Image.asset("assets/images/qrcode.png"),
-              ),
-            ),
-            activeColorPrimary: Colors.transparent),
+        // PersistentBottomNavBarItem(
+        //     // icon: ClipOval(
+        //     //   child: Container(
+        //     //     decoration: BoxDecoration(
+        //     //       gradient: LinearGradient(
+        //     //         colors: [Color(0xFF9A4DFF).withOpacity(1), Color(0xFFF600DD)],
+        //     //         begin: Alignment.topCenter,
+        //     //         end: Alignment.bottomCenter,
+        //     //       ),
+        //     //       // border: Border.all(color: Color(0xFFab3bb0),width: 1)
+        //     //     ),
+        //     //     child: Image.asset("assets/images/qrcode.png"),
+        //     //   ),
+        //     // ),
+        //     contentPadding: 0,
+        //     icon: Container(
+        //       decoration: BoxDecoration(
+        //         gradient: LinearGradient(
+        //           colors: [Color(0xFF9A4DFF).withOpacity(1), Color(0xFFF600DD)],
+        //           begin: Alignment.topCenter,
+        //           end: Alignment.bottomCenter,
+        //         ),
+        //         // border: Border.all(color: Color(0xFFab3bb0),width: 1)
+        //       ),
+        //       child: Image.asset("assets/images/qrcode.png"),
+        //     ),
+        //     activeColorPrimary: Colors.transparent),
         PersistentBottomNavBarItem(
           icon: Image.asset(
             "assets/images/active_bottom_icon2.png",

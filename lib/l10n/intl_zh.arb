@@ -4,5 +4,12 @@
   "verification_code": "验证码",
   "referral_code": "推荐码",
   "send_code": "发送验证码",
-  "register":"注册"
+  "register":"注册",
+
+  "activities": "详情",
+  "total_balance": "总金额",
+  "locked": "未解锁",
+  "unlocked": "已解锁",
+  "withdraw": "提现",
+  "balance": "余额"
 }

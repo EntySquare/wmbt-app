@@ -4,5 +4,12 @@
     "verification_code": "Verification Code",
     "referral_code": "Referral Code",
     "send_code": "Send Code",
-    "register":"Register"
+    "register":"Register",
+
+    "activities": "Activities",
+    "total_balance": "Total Balance",
+    "locked": "Locked",
+    "unlocked": "Unlocked",
+    "withdraw": "Withdraw",
+    "balance": "Balance"
 }

@@ -94,6 +94,9 @@ class CommonStyle {
   static const TextStyle text_14_white_w600 = TextStyle(color: Color(0xFFffffff), fontSize: 14, fontWeight: FontWeight.w600);
 
   static const TextStyle text_15_white = TextStyle(color: Color(0xFFffffff), fontSize: 15);
+  static const TextStyle text_16_white = TextStyle(color: Color(0xFFffffff), fontSize: 16);
+  static const TextStyle text_16_white_underline = TextStyle(color: Color(0xFFffffff), fontSize: 16,decoration:TextDecoration.underline);
+  static const TextStyle text_16_white_w700 = TextStyle(color: Color(0xFFffffff), fontSize: 16,fontWeight: FontWeight.w700);
   static const TextStyle text_25_white = TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.w700);
   static const TextStyle text_18_w700 =
       TextStyle(color: Color(0xFFffffff), fontSize: 18, fontWeight: FontWeight.w700, fontFamily: 'FangZhengHeiTiFanTi');

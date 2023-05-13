@@ -22,11 +22,17 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "activities": MessageLookupByLibrary.simpleMessage("详情"),
+        "balance": MessageLookupByLibrary.simpleMessage("余额"),
+        "locked": MessageLookupByLibrary.simpleMessage("未解锁"),
         "login": MessageLookupByLibrary.simpleMessage("登录"),
         "mobile_number": MessageLookupByLibrary.simpleMessage("手机号码"),
         "referral_code": MessageLookupByLibrary.simpleMessage("推荐码"),
         "register": MessageLookupByLibrary.simpleMessage("注册"),
         "send_code": MessageLookupByLibrary.simpleMessage("发送验证码"),
-        "verification_code": MessageLookupByLibrary.simpleMessage("验证码")
+        "total_balance": MessageLookupByLibrary.simpleMessage("总金额"),
+        "unlocked": MessageLookupByLibrary.simpleMessage("已解锁"),
+        "verification_code": MessageLookupByLibrary.simpleMessage("验证码"),
+        "withdraw": MessageLookupByLibrary.simpleMessage("提现")
       };
 }

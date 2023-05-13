@@ -109,6 +109,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Activities`
+  String get activities {
+    return Intl.message(
+      'Activities',
+      name: 'activities',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Balance`
+  String get total_balance {
+    return Intl.message(
+      'Total Balance',
+      name: 'total_balance',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Locked`
+  String get locked {
+    return Intl.message(
+      'Locked',
+      name: 'locked',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unlocked`
+  String get unlocked {
+    return Intl.message(
+      'Unlocked',
+      name: 'unlocked',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Withdraw`
+  String get withdraw {
+    return Intl.message(
+      'Withdraw',
+      name: 'withdraw',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Balance`
+  String get balance {
+    return Intl.message(
+      'Balance',
+      name: 'balance',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
