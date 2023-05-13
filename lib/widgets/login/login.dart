@@ -7,6 +7,7 @@ import 'package:wmbt/common/style/common_style.dart';
 import 'package:wmbt/data/repositories/Theme_cubit.dart';
 import 'package:wmbt/generated/l10n.dart';
 import 'dart:math' as math;
+
 // import 'package:wmbt/routes.dart';
 import 'package:wmbt/utils/auth.dart';
 import 'package:wmbt/widgets/login/register.dart';
@@ -139,8 +140,9 @@ class _LoginBoxState extends State<LoginBox> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 InkWell(
-                  onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context){
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (BuildContext context) {
                       return RegisterPage();
                     }));
                   },
@@ -151,7 +153,6 @@ class _LoginBoxState extends State<LoginBox> {
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
                   ),
                 ),
-
                 Container(
                   height: 24,
                   decoration: BoxDecoration(
@@ -192,18 +193,6 @@ class _LoginBoxState extends State<LoginBox> {
                     },
                   ),
                 ),
-
-                // 主题切换按钮
-                // IconButton(
-                //     onPressed:
-                // () async => {
-                //           // await tokenStorage.deleteToken(),
-                //           isDark_on
-                //               ? context.read<ThemeCubit>().switchToLightTheme()
-                //               : context.read<ThemeCubit>().switchToDarkTheme(),
-                //           // AppNavigator.push(Routes.home)
-                //         },
-                //     icon: Image.asset("assets/images/login_switch_on.png")),
               ],
             ),
           ),
@@ -245,26 +234,76 @@ class _LoginBoxState extends State<LoginBox> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
-                      height: 50,
-                      //color: Colors.red,
-                      //margin: EdgeInsets.only(bottom: 90),
-                      alignment: Alignment.bottomCenter,
-                    ),
-                    Container(
-                      height: 49,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
+                    Expanded(
+                        flex: 1,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Container(),
+                            Container(
+                              height: 50,
+                              //color: Colors.orange,
+                              //margin: EdgeInsets.only(bottom: 90),
+                              alignment: Alignment.bottomCenter,
+                              child: Center(
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      width: 11,
+                                      height: 11,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        border: Border.all(
+                                            width: 1,
+                                            color: Color(0xff9A4DFF),
+                                            style: BorderStyle.solid),
+                                      ),
+                                      margin: EdgeInsets.all(5),
+                                    ),
+                                    Text(
+                                      "Agree to the ",
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w400,
+                                          color: Colors.white,
+                                          decoration: TextDecoration.none),
+                                    ),
+                                    Text(
+                                      "terms and conditions",
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w400,
+                                          color: Colors.white,
+                                          decoration: TextDecoration.underline),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        )),
+                    InkWell(
+                      onTap: (){
+                        print("登录");
+                      },
+                      child: Container(
+                        height: 49,
+                        width: double.infinity,
+                        decoration: const BoxDecoration(
                           gradient: LinearGradient(
                               colors: [Color(0xff9A4DFF), Color(0xffF600DD)],
                               begin: Alignment.centerLeft,
-                              end: Alignment.centerRight)),
-                      alignment: Alignment.bottomCenter,
-                      child: TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          S.of(context).login,
-                          style: CommonStyle.text_14_white,
+                              end: Alignment.centerRight),
+                          borderRadius: BorderRadius.all(Radius.circular(8)),
+                        ),
+                        alignment: Alignment.bottomCenter,
+                        child: TextButton(
+                          onPressed: null,
+                          child: Text(
+                            S.of(context).login,
+                            style: CommonStyle.text_14_white,
+                          ),
                         ),
                       ),
                     ),
@@ -289,7 +328,9 @@ class _LoginBoxState extends State<LoginBox> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              padding: EdgeInsets.only(left: 15,),
+              padding: EdgeInsets.only(
+                left: 15,
+              ),
               height: 37,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(8)),
@@ -344,20 +385,25 @@ class _LoginBoxState extends State<LoginBox> {
                       ),
                     ),
                   ),
-                  index==0?Container(
-                    width: 80,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [Color(0xff9A4DFF),Color(0xffF600DD)],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                      ),
-                      borderRadius: BorderRadius.all(Radius.circular(8)),
-                    ),
-                    height: double.infinity,
-                    alignment: Alignment.center,
-                    child: Text(S.of(context).send_code, style: CommonStyle.text_12_white_w400,),
-                  ):Container()
+                  index == 0
+                      ? Container(
+                          width: 80,
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [Color(0xff9A4DFF), Color(0xffF600DD)],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                            ),
+                            borderRadius: BorderRadius.all(Radius.circular(8)),
+                          ),
+                          height: double.infinity,
+                          alignment: Alignment.center,
+                          child: Text(
+                            S.of(context).send_code,
+                            style: CommonStyle.text_12_white_w400,
+                          ),
+                        )
+                      : Container()
                 ],
               ),
             )

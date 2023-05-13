@@ -8,6 +8,7 @@ import '../../generated/l10n.dart';
 import '../../utils/auth.dart';
 import '../../utils/gradient_text.dart';
 import '../setI10n/WmbtDropdownButton.dart';
+import 'kyc_step_one.dart';
 
 class InputItem {
   final int id;
@@ -221,7 +222,7 @@ class _LoginBoxState extends State<LoginBox> {
             child: SwitchLanguage(),
           ),
 
-          // 登录按钮
+          // 注册按钮
           Expanded(
               flex: 1,
               child: Container(
@@ -235,29 +236,65 @@ class _LoginBoxState extends State<LoginBox> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
-                      height: 50,
-                      //color: Colors.red,
-                      //margin: EdgeInsets.only(bottom: 90),
-                      alignment: Alignment.bottomCenter,
-                    ),
-                    Container(
-                      height: 49,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                              colors: [Color(0xff9A4DFF), Color(0xffF600DD)],
-                              begin: Alignment.centerLeft,
-                              end: Alignment.centerRight)),
-                      alignment: Alignment.bottomCenter,
-                      child: TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          S.of(context).register,
-                          style: CommonStyle.text_14_white,
+                    Expanded(
+                        flex: 1,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Container(),
+                            Container(
+                              height: 50,
+                              //color: Colors.orange,
+                              //margin: EdgeInsets.only(bottom: 90),
+                              alignment: Alignment.bottomCenter,
+                              child: Center(
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      width: 11,
+                                      height: 11,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        border: Border.all(width: 1, color:Color(0xff9A4DFF),style: BorderStyle.solid),
+                                      ),
+                                      margin: EdgeInsets.all(5),
+                                    ),
+                                    Text("Agree to the ", style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400, color: Colors.white,decoration: TextDecoration.none),),
+                                    Text("terms and conditions", style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400, color: Colors.white,decoration: TextDecoration.underline),)
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        )),
+                    InkWell(
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (BuildContext context){
+                          return KycStepOnePage();
+                        }));
+                      },
+                      child: Container(
+                        height: 49,
+                        width: double.infinity,
+                        decoration: const BoxDecoration(
+                            gradient: LinearGradient(
+                                colors: [Color(0xff9A4DFF), Color(0xffF600DD)],
+                                begin: Alignment.centerLeft,
+                                end: Alignment.centerRight),
+                            borderRadius: BorderRadius.all(Radius.circular(8))
+                        ),
+                        alignment: Alignment.bottomCenter,
+                        child: TextButton(
+                          onPressed:null,
+                          child: Text(
+                            S.of(context).register,
+                            style: CommonStyle.text_14_white,
+                          ),
                         ),
                       ),
                     ),
+
                   ],
                 ),
               ))
@@ -272,19 +309,19 @@ class _LoginBoxState extends State<LoginBox> {
     return Container(
         height: 45,
         //color: Colors.red,
-        padding: EdgeInsets.symmetric(horizontal: 38),
-        margin: EdgeInsets.only(top: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 38),
+        margin: const EdgeInsets.only(top: 16),
         alignment: Alignment.centerLeft,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              padding: EdgeInsets.only(left: 15,),
+              padding: const EdgeInsets.only(left: 15,),
               height: 37,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(8)),
-                  color: isDark_on ? Color(0xff221d29) : Color(0xffffffff),
-                  border: Border.all(color: Color(0xff9A4DFF), width: 0.5)),
+                  borderRadius: const BorderRadius.all(Radius.circular(8)),
+                  color: isDark_on ? const Color(0xff221d29) : Color(0xffffffff),
+                  border: Border.all(color: const Color(0xff9A4DFF), width: 0.5)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -299,7 +336,7 @@ class _LoginBoxState extends State<LoginBox> {
                       minLines: 1,
                       autofocus: false,
                       //focusNode: item.node,
-                      cursorColor: Color(0xff348a70),
+                      cursorColor: const Color(0xff348a70),
                       onFieldSubmitted: (value) {
                         setState(() {});
                       },
@@ -365,14 +402,6 @@ class _LoginBoxState extends State<LoginBox> {
     if (index == 0) {
       return Container(
         width: 80,
-        // decoration: BoxDecoration(
-        //   gradient: LinearGradient(
-        //     colors: [Color(0xff9A4DFF), Color(0xffF600DD)],
-        //     begin: Alignment.topLeft,
-        //     end: Alignment.bottomRight,
-        //   ),
-        //   borderRadius: BorderRadius.all(Radius.circular(8)),
-        // ),
         height: double.infinity,
         alignment: Alignment.centerRight,
         padding: EdgeInsets.only(right: 10),

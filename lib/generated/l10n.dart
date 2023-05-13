@@ -100,6 +100,36 @@ class S {
     );
   }
 
+  /// `To have a secure and safe journey with us\nPlease verify your identity to complete the registration`
+  String get step_msg1 {
+    return Intl.message(
+      'To have a secure and safe journey with us\nPlease verify your identity to complete the registration',
+      name: 'step_msg1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Proof of identity verification successful\nYou’re ready to go!`
+  String get step_msg4 {
+    return Intl.message(
+      'Proof of identity verification successful\nYou’re ready to go!',
+      name: 'step_msg4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Next`
+  String get next {
+    return Intl.message(
+      'Next',
+      name: 'next',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Register`
   String get register {
     return Intl.message(
