@@ -19,12 +19,9 @@ class kycStepTwoPage extends StatefulWidget {
 }
 
 class _kycStepTwoPageState extends State<kycStepTwoPage> {
-  final PageController _pageController = PageController(initialPage: 1);
-  int _currentPage = 0;
 
   @override
   void dispose() {
-    _pageController.dispose();
     super.dispose();
   }
 

@@ -41,6 +41,14 @@ class CommonStyle {
       fontWeight: FontWeight.w400,
       fontFamily: 'FangZhengHeiTiFanTi',
       decoration: TextDecoration.underline);
+
+  static final TextStyle text_16_white_w400 = TextStyle(
+      color: Colors.white,
+      fontSize: 16,
+      fontWeight: FontWeight.w400,
+      fontFamily: 'FangZhengHeiTiFanTi',
+      decoration: TextDecoration.none);
+
   static final TextStyle text_12_grey_opacity60 = TextStyle(
       color: Color(0xFF171930).withOpacity(0.6), fontSize: 12, fontWeight: FontWeight.w400, fontFamily: 'FangZhengHeiTiFanTi', decoration: TextDecoration.none);
 
@@ -54,6 +62,9 @@ class CommonStyle {
   static const TextStyle text_12_black_w700 = TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.w700, decoration: TextDecoration.none);
 
   static const TextStyle text_12_colorD9D9D9_w400 = TextStyle(color: Color(0xffD9D9D9), fontSize: 12, fontWeight: FontWeight.w400, decoration: TextDecoration.none);
+
+  static final TextStyle text_12_colorF6F6FB_w400_opacity50 = TextStyle(
+      color: Color(0xFFF6F6FB).withOpacity(0.5), fontSize: 12, fontWeight: FontWeight.w400, fontFamily: 'FangZhengHeiTiFanTi', decoration: TextDecoration.none);
 
   static const TextStyle text_14_black = TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w400);
   static const TextStyle text_14_black_underline = TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w400,decoration:TextDecoration.underline);
@@ -135,6 +146,9 @@ class CommonStyle {
   //
   static const TextStyle text_14_colorF6F6FB_w400 =
   TextStyle(color: Color(0xFFF6F6FB), fontSize: 14, fontWeight: FontWeight.w400, fontFamily: 'FangZhengHeiTiFanTi', decoration: TextDecoration.none);
+
+  static const TextStyle text_20_colorF6F6FB_w400 =
+  TextStyle(color: Color(0xFFF6F6FB), fontSize: 20, fontWeight: FontWeight.w400, fontFamily: 'FangZhengHeiTiFanTi', decoration: TextDecoration.none);
 
   static const TextStyle text_14_colorF6F6FB_w600 =
   TextStyle(color: Color(0xFFF6F6FB), fontSize: 14, fontWeight: FontWeight.w600, fontFamily: 'FangZhengHeiTiFanTi', decoration: TextDecoration.none);

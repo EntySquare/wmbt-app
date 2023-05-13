@@ -215,8 +215,12 @@ class _KycStepFourPageState extends State<KycStepFourPage> {
                         decoration: const BoxDecoration(
                             gradient: LinearGradient(
                                 colors: [Color(0xff9A4DFF), Color(0xffF600DD)],
-                                begin: Alignment.centerLeft,
+                                begin: Alignment.topLeft,
                                 end: Alignment.centerRight),
+                            boxShadow: [
+                              //BoxShadow(color: Colors.grey.shade300, blurRadius: 6.0, spreadRadius: 2.0)
+                              BoxShadow(color: Colors.grey, blurRadius: 4, spreadRadius: 2),
+                            ],
                             borderRadius: BorderRadius.all(Radius.circular(8))),
                         alignment: Alignment.bottomCenter,
                         child: TextButton(
