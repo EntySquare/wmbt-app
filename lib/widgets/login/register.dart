@@ -236,35 +236,65 @@ class _LoginBoxState extends State<LoginBox> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
-                      height: 50,
-                      //color: Colors.red,
-                      //margin: EdgeInsets.only(bottom: 90),
-                      alignment: Alignment.bottomCenter,
-                    ),
-                    Container(
-                      height: 49,
-                      width: double.infinity,
-                      decoration: const BoxDecoration(
-                          gradient: LinearGradient(
-                              colors: [Color(0xff9A4DFF), Color(0xffF600DD)],
-                              begin: Alignment.centerLeft,
-                              end: Alignment.centerRight),
-                          borderRadius: BorderRadius.all(Radius.circular(8))
-                      ),
-                      alignment: Alignment.bottomCenter,
-                      child: TextButton(
-                        onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context){
-                            return KycStepOnePage();
-                          }));
-                        },
-                        child: Text(
-                          S.of(context).register,
-                          style: CommonStyle.text_14_white,
+                    Expanded(
+                        flex: 1,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Container(),
+                            Container(
+                              height: 50,
+                              //color: Colors.orange,
+                              //margin: EdgeInsets.only(bottom: 90),
+                              alignment: Alignment.bottomCenter,
+                              child: Center(
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      width: 11,
+                                      height: 11,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        border: Border.all(width: 1, color:Color(0xff9A4DFF),style: BorderStyle.solid),
+                                      ),
+                                      margin: EdgeInsets.all(5),
+                                    ),
+                                    Text("Agree to the ", style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400, color: Colors.white,decoration: TextDecoration.none),),
+                                    Text("terms and conditions", style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400, color: Colors.white,decoration: TextDecoration.underline),)
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        )),
+                    InkWell(
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (BuildContext context){
+                          return KycStepOnePage();
+                        }));
+                      },
+                      child: Container(
+                        height: 49,
+                        width: double.infinity,
+                        decoration: const BoxDecoration(
+                            gradient: LinearGradient(
+                                colors: [Color(0xff9A4DFF), Color(0xffF600DD)],
+                                begin: Alignment.centerLeft,
+                                end: Alignment.centerRight),
+                            borderRadius: BorderRadius.all(Radius.circular(8))
+                        ),
+                        alignment: Alignment.bottomCenter,
+                        child: TextButton(
+                          onPressed:null,
+                          child: Text(
+                            S.of(context).register,
+                            style: CommonStyle.text_14_white,
+                          ),
                         ),
                       ),
                     ),
+
                   ],
                 ),
               ))

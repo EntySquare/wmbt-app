@@ -5,6 +5,7 @@ import '../../common/style/common_style.dart';
 import '../../common/style/language_dialog.dart';
 import '../../data/repositories/Theme_cubit.dart';
 import '../../generated/l10n.dart';
+import '../../index.dart';
 
 class KycStepFourPage extends StatefulWidget {
   const KycStepFourPage({Key? key}) : super(key: key);
@@ -202,21 +203,28 @@ class _KycStepFourPageState extends State<KycStepFourPage> {
                         )),
 
                     // 下一步
-                    Container(
-                      height: 49,
-                      width: double.infinity,
-                      decoration: const BoxDecoration(
-                          gradient: LinearGradient(
-                              colors: [Color(0xff9A4DFF), Color(0xffF600DD)],
-                              begin: Alignment.centerLeft,
-                              end: Alignment.centerRight),
-                          borderRadius: BorderRadius.all(Radius.circular(8))),
-                      alignment: Alignment.bottomCenter,
-                      child: TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          "Welcome",
-                          style: CommonStyle.text_14_white,
+                    GestureDetector(
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (BuildContext context){
+                          return MainMenu();
+                        }));
+                      },
+                      child: Container(
+                        height: 49,
+                        width: double.infinity,
+                        decoration: const BoxDecoration(
+                            gradient: LinearGradient(
+                                colors: [Color(0xff9A4DFF), Color(0xffF600DD)],
+                                begin: Alignment.centerLeft,
+                                end: Alignment.centerRight),
+                            borderRadius: BorderRadius.all(Radius.circular(8))),
+                        alignment: Alignment.bottomCenter,
+                        child: TextButton(
+                          onPressed: null,
+                          child: Text(
+                            "Welcome",
+                            style: CommonStyle.text_14_white,
+                          ),
                         ),
                       ),
                     ),

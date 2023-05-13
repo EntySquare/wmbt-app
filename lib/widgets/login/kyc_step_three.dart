@@ -199,25 +199,28 @@ class _KycStepThreePageState extends State<KycStepThreePage> {
                         )),
 
                     // 下一步
-                    Container(
-                      height: 49,
-                      width: double.infinity,
-                      decoration: const BoxDecoration(
-                          gradient: LinearGradient(
-                              colors: [Color(0xff9A4DFF), Color(0xffF600DD)],
-                              begin: Alignment.centerLeft,
-                              end: Alignment.centerRight),
-                          borderRadius: BorderRadius.all(Radius.circular(8))),
-                      alignment: Alignment.bottomCenter,
-                      child: TextButton(
-                        onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context){
-                            return KycStepFourPage();
-                          }));
-                        },
-                        child: Text(
-                          "Document  uploading . . .",
-                          style: CommonStyle.text_14_white,
+                    GestureDetector(
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (BuildContext context){
+                          return KycStepFourPage();
+                        }));
+                      },
+                      child: Container(
+                        height: 49,
+                        width: double.infinity,
+                        decoration: const BoxDecoration(
+                            gradient: LinearGradient(
+                                colors: [Color(0xff9A4DFF), Color(0xffF600DD)],
+                                begin: Alignment.centerLeft,
+                                end: Alignment.centerRight),
+                            borderRadius: BorderRadius.all(Radius.circular(8))),
+                        alignment: Alignment.bottomCenter,
+                        child: TextButton(
+                          onPressed: null,
+                          child: Text(
+                            "Document  uploading . . .",
+                            style: CommonStyle.text_14_white,
+                          ),
                         ),
                       ),
                     ),
