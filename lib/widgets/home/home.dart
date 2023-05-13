@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:wmbt/common/style/common_style.dart';
+import 'package:wmbt/widgets/qrcode/qr_code.dart';
 
 import '../../generated/l10n.dart';
 
@@ -228,27 +229,32 @@ class _HomeState extends State<Home> {
                     ),
                   ]),
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 5),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  ClipOval(
-                    child: Container(
-                      width: Get.height * .08,
-                      height: Get.height * .08,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [Color(0xFF9A4DFF).withOpacity(0.3), Color(0xFFF600DD)],
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                        ),
-                        // border: Border.all(color: Color(0xFFab3bb0),width: 1)
-                      ),
+                  InkWell(
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
+                      return QrCode();
+                    })),
+                    child: ClipOval(
                       child: Container(
-                        padding: EdgeInsets.all(20),
-                        child: Image.asset("assets/images/qrcode.png"),
+                        width: Get.height * .08,
+                        height: Get.height * .08,
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [Color(0xFF9A4DFF).withOpacity(0.3), Color(0xFFF600DD)],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                          // border: Border.all(color: Color(0xFFab3bb0),width: 1)
+                        ),
+                        child: Container(
+                          padding: EdgeInsets.all(20),
+                          child: Image.asset("assets/images/qrcode.png"),
+                        ),
                       ),
                     ),
                   ),

@@ -32,39 +32,39 @@ class _IndexState extends State<Index> with SingleTickerProviderStateMixin {
     return Scaffold(
       body: _pages.elementAt(_currentIndex),
       bottomNavigationBar: ConvexAppBar(
-            controller: _tabController,
-            color: Colors.black38,
-            style: TabStyle.react,
-            items: [
-              TabItem(
-                icon: Image.asset(
-                  'assets/images/inactive_bottom_icon1.png',
-                ),
-                activeIcon: Image.asset(
-                  'assets/images/active_bottom_icon1.png',
-                ),
-              ),
-              TabItem(
-                icon: Image.asset(
-                  'assets/images/inactive_bottom_icon2.png',
-                ),
-                activeIcon: Image.asset(
-                  'assets/images/active_bottom_icon2.png',
-                ),
-              ),
-            ],
-            initialActiveIndex: 0,
-            height: Get.height * .07,
-            backgroundColor: Color(0xFF211d28),
-            top: 0,
-            elevation: 20,
-            shadowColor: Color(0xFF8927a5),
-            onTap: (int i) {
-              setState(() {
-                _currentIndex = i;
-              });
-            },
+        controller: _tabController,
+        color: Colors.black38,
+        style: TabStyle.react,
+        items: [
+          TabItem(
+            icon: Image.asset(
+              'assets/images/inactive_bottom_icon1.png',
+            ),
+            activeIcon: Image.asset(
+              'assets/images/active_bottom_icon1.png',
+            ),
           ),
+          TabItem(
+            icon: Image.asset(
+              'assets/images/inactive_bottom_icon2.png',
+            ),
+            activeIcon: Image.asset(
+              'assets/images/active_bottom_icon2.png',
+            ),
+          ),
+        ],
+        initialActiveIndex: 0,
+        height: Get.height * .07,
+        backgroundColor: Color(0xFF211d28),
+        top: 0,
+        elevation: 20,
+        shadowColor: Color(0xFF8927a5),
+        onTap: (int i) {
+          setState(() {
+            _currentIndex = i;
+          });
+        },
+      ),
 
       // bottomNavigationBar: BottomNavigationBar(
       //     fixedColor: Colors.red,
