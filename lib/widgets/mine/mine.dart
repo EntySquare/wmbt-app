@@ -7,6 +7,7 @@ import '../../common/style/common_style.dart';
 import '../../data/repositories/Theme_cubit.dart';
 import '../../generated/l10n.dart';
 import '../../utils/gradient_text.dart';
+import 'account_settings.dart';
 import 'my_relationship.dart';
 
 class Mine extends StatefulWidget {
@@ -142,6 +143,7 @@ class _MineState extends State<Mine> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+
                   Container(
                     child: GradientText(
                       text: "Security Settings",
@@ -323,7 +325,9 @@ class _MineState extends State<Mine> {
             //color: Colors.red,
             child: InkWell(
               onTap: (){
-
+                Navigator.push(context, MaterialPageRoute(builder: (BuildContext context){
+                  return AccountSettingsPage();
+                }));
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
