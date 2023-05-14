@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_switch/flutter_switch.dart';
+import 'package:get/get.dart';
 import 'package:wmbt/widgets/setI10n/WmbtDropdownButton.dart';
 import 'dart:math' as math;
 import '../../common/style/common_style.dart';
 import '../../data/repositories/Theme_cubit.dart';
 import '../../generated/l10n.dart';
 import '../../utils/gradient_text.dart';
+import '../qrcode/qr_code.dart';
 import 'account_settings.dart';
 import 'my_relationship.dart';
 
@@ -346,7 +348,38 @@ class _MineState extends State<Mine> {
                 ],
               ),
             ),
-          )
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                InkWell(
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
+                    return QrCode();
+                  })),
+                  child: ClipOval(
+                    child: Container(
+                      width: Get.height * .08,
+                      height: Get.height * .08,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [Color(0xFF9A4DFF).withOpacity(0.3), Color(0xFFF600DD)],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ),
+                        // border: Border.all(color: Color(0xFFab3bb0),width: 1)
+                      ),
+                      child: Container(
+                        padding: EdgeInsets.all(20),
+                        child: Image.asset("assets/images/qrcode.png"),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
