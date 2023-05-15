@@ -23,6 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "activities": MessageLookupByLibrary.simpleMessage("Activities"),
+        "all": MessageLookupByLibrary.simpleMessage("All"),
         "balance": MessageLookupByLibrary.simpleMessage("Balance"),
         "locked": MessageLookupByLibrary.simpleMessage("Locked"),
         "login": MessageLookupByLibrary.simpleMessage("Log in"),
@@ -35,7 +36,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "To have a secure and safe journey with us\nPlease verify your identity to complete the registration"),
         "step_msg4": MessageLookupByLibrary.simpleMessage(
             "Proof of identity verification successful\nYou’re ready to go!"),
+        "time_range": MessageLookupByLibrary.simpleMessage("Time Range"),
         "total_balance": MessageLookupByLibrary.simpleMessage("Total Balance"),
+        "unlock": MessageLookupByLibrary.simpleMessage("Unlock"),
         "unlocked": MessageLookupByLibrary.simpleMessage("Unlocked"),
         "verification_code":
             MessageLookupByLibrary.simpleMessage("Verification Code"),

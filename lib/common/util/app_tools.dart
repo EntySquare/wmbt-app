@@ -1,7 +1,6 @@
 
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:device_info/device_info.dart';
 
 // 如果设备是iPhoneX及更新设备，返回ture
 bool isIPhoneXOrAbove(BuildContext context) {
@@ -16,20 +15,20 @@ bool isIPhoneXOrAbove(BuildContext context) {
 }
 
 
-Future<String> getDeviceUDID() async {
-  final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
-  String udid = "";
-
-  if (Platform.isAndroid) {
-    final AndroidDeviceInfo androidInfo = await deviceInfoPlugin.androidInfo;
-    udid = androidInfo.androidId; // 获取Android设备的UDID
-  } else if (Platform.isIOS) {
-    final IosDeviceInfo iosInfo = await deviceInfoPlugin.iosInfo;
-    udid = iosInfo.identifierForVendor; // 获取iOS设备的UDID
-  }
-
-  return udid;
-}
+// Future<String> getDeviceUDID() async {
+//   final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
+//   String udid = "";
+//
+//   if (Platform.isAndroid) {
+//     final AndroidDeviceInfo androidInfo = await deviceInfoPlugin.androidInfo;
+//     udid = androidInfo.androidId; // 获取Android设备的UDID
+//   } else if (Platform.isIOS) {
+//     final IosDeviceInfo iosInfo = await deviceInfoPlugin.iosInfo;
+//     udid = iosInfo.identifierForVendor; // 获取iOS设备的UDID
+//   }
+//
+//   return udid;
+// }
 
 // 根据不同的值，返回不同的颜色
 Color getMarketColor(double value) {

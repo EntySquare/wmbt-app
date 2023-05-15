@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:wmbt/common/style/common_style.dart';
+import 'package:wmbt/widgets/home/activities.dart';
 import 'package:wmbt/widgets/qrcode/qr_code.dart';
 
 import '../../generated/l10n.dart';
@@ -50,11 +51,11 @@ class _HomeState extends State<Home> {
         ),
         child: Column(
           children: [
-            SizedBox(height: Get.height * 0.12),
+            SizedBox(height: Get.height * 0.1),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 16),
               padding: EdgeInsets.symmetric(horizontal: 19, vertical: 31),
-              height: Get.height * 0.35,
+              height: Get.height * 0.34,
               width: Get.width,
               decoration: BoxDecoration(
                 color: Colors.white.withOpacity(0.15),
@@ -75,9 +76,16 @@ class _HomeState extends State<Home> {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        S.of(context).activities,
-                        style: CommonStyle.text_16_white_underline,
+                      InkWell(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => Activities(),
+                          ));
+                        },
+                        child: Text(
+                          S.of(context).activities,
+                          style: CommonStyle.text_16_white_underline,
+                        ),
                       ),
                       InkWell(
                         child: Container(

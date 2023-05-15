@@ -67,29 +67,23 @@ class _MyRelationshipPageState extends State<MyRelationshipPage> {
                 children: [
                   GradientText(
                     text: "First layer",
-                    gradient: LinearGradient(
-                        colors: [Color(0xff9A4DFF), Color(0xffF600DD)]),
-                    style: TextStyle(
-                        fontSize: 17,
-                        fontWeight: FontWeight.w700,
-                        decoration: TextDecoration.underline),
+                    gradient: LinearGradient(colors: [Color(0xff9A4DFF), Color(0xffF600DD)]),
+                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.w700, decoration: TextDecoration.underline),
                   ),
-                  Text("Second layer", style: CommonStyle.text_14_colorF6F6FB_w400_opacity50,),
+                  Text(
+                    "Second layer",
+                    style: CommonStyle.text_14_colorF6F6FB_w400_opacity50,
+                  ),
                 ],
               ),
             ),
-            Expanded(
-                flex: 1,
-                child: Container(
-                  //padding: EdgeInsets.only(top: 8),
-                  child: ListView.builder(
-                    padding: EdgeInsets.zero,
-                    itemCount: 10,
-                    itemBuilder: (BuildContext context, int index) {
-                      return getRow(index, isDark_on);
-                    },
-                  ),
-                ))
+            ListView.builder(
+              padding: EdgeInsets.zero,
+              itemCount: 10,
+              itemBuilder: (BuildContext context, int index) {
+                return getRow(index, isDark_on);
+              },
+            ),
           ],
         ),
       ),
@@ -113,8 +107,6 @@ class _MyRelationshipPageState extends State<MyRelationshipPage> {
           Expanded(
             flex: 1,
             child: Container(
-              //color: Colors.orange,
-
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -141,8 +133,7 @@ class _MyRelationshipPageState extends State<MyRelationshipPage> {
                             ),
                             Text(
                               "01/02/2023",
-                              style: CommonStyle
-                                  .text_14_colorF6F6FB_w400_opacity50,
+                              style: CommonStyle.text_14_colorF6F6FB_w400_opacity50,
                             )
                           ],
                         ),
