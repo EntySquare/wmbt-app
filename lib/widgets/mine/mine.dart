@@ -30,6 +30,7 @@ class _MineState extends State<Mine> {
   late TextEditingController _pinEditingController;
   late FocusNode _focusNode;
   final formKey = GlobalKey<FormState>();
+  final two_aut_on = false.obs; // 二次认证开启状态
 
   @override
   void dispose() {
@@ -41,7 +42,7 @@ class _MineState extends State<Mine> {
     final double safe_bottom = MediaQuery.of(context).padding.bottom;
     final double safe_top = MediaQuery.of(context).padding.top;
     bool isDark_on = context.read<ThemeCubit>().isDarkTheme();
-    bool two_aut_on = false; // 二次认证开启状态
+
 
     return Container(
       width: double.infinity,
@@ -227,7 +228,7 @@ class _MineState extends State<Mine> {
                                     value: false,
                                     borderRadius: 30.0,
                                     padding: 2.0,
-                                    activeColor: two_aut_on?Color(0xff9A4DFF):Color(0xffF6F6FB).withOpacity(0.5),// 打开时背景色
+                                    activeColor: two_aut_on.value?Color(0xff9A4DFF):Color(0xffF6F6FB).withOpacity(0.5),// 打开时背景色
                                     inactiveColor: Color(0xff634e68),// 关闭时开关的背景颜色
                                     activeToggleColor: Color(0xff9A4DFF),
                                     showOnOff: false,
@@ -309,7 +310,7 @@ class _MineState extends State<Mine> {
                                 width: 65,
                                 //color: Colors.red,
                                 padding: EdgeInsets.only(right: 15),
-                                child: FlutterSwitch(
+                                child: Obx(() => FlutterSwitch(
                                   width: 50.0,
                                   height: 24.0,
                                   valueFontSize: 12.0,
@@ -317,7 +318,7 @@ class _MineState extends State<Mine> {
                                   value: true,
                                   borderRadius: 30.0,
                                   padding: 2.0,
-                                  activeColor: two_aut_on?Color(0xff9A4DFF):Color(0xffF6F6FB).withOpacity(0.5),// 打开时背景色
+                                  activeColor: two_aut_on.value?Color(0xff9A4DFF):Color(0xffF6F6FB).withOpacity(0.5),// 打开时背景色
                                   inactiveColor: Color(0xff634e68),// 关闭时开关的背景颜色
                                   activeToggleColor: Color(0xff9A4DFF),
                                   showOnOff: false,
@@ -325,7 +326,7 @@ class _MineState extends State<Mine> {
                                     _getBottomSheetView(2);
 
                                   },
-                                ),
+                                )),
                               )
                             ],
                           ),
@@ -588,7 +589,7 @@ class _MineState extends State<Mine> {
                             ),
                             borderRadius: BorderRadius.all(Radius.circular(8)),
                           ),
-                          child: twoFactorAuthenticationNoopen(),
+                          child: Obx(() => two_aut_on.value?verificationCodeInputView():twoFactorAuthenticationOpen()),
                         ),
                       ),
                     ),
@@ -605,7 +606,7 @@ class _MineState extends State<Mine> {
   }
 
   // 二次认证未开启
-  Widget twoFactorAuthenticationNoopen() {
+  Widget twoFactorAuthenticationClose() {
 
     return Container(
       child: Column(
@@ -654,12 +655,12 @@ class _MineState extends State<Mine> {
                   width: 65,
                   //color: Colors.red,
                   padding: EdgeInsets.only(right: 15),
-                  child: FlutterSwitch(
+                  child: Obx(() => FlutterSwitch(
                     width: 50.0,
                     height: 24.0,
                     valueFontSize: 12.0,
                     toggleSize: 20.0,
-                    value: true,
+                    value: two_aut_on.value,
                     borderRadius: 30.0,
                     padding: 2.0,
                     activeColor: Color(0xffF6F6FB).withOpacity(0.5),// 打开时背景色
@@ -667,9 +668,12 @@ class _MineState extends State<Mine> {
                     activeToggleColor: Color(0xff9A4DFF),
                     showOnOff: false,
                     onToggle: (val) {
+                      print("二次验证按钮点击");
+
+                      two_aut_on.value = !two_aut_on.value;
 
                     },
-                  ),
+                  )),
                 ),
               ],
             ),
@@ -701,6 +705,172 @@ class _MineState extends State<Mine> {
 
                   ),
                 )
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+
+  }
+
+  Widget twoFactorAuthenticationOpen() {
+
+    return Container(
+      child: Column(
+        //mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Container(
+            child: Row(
+              children: [
+                // 返回键
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Container(
+                    width: 55,
+                    child: Image.asset(
+                        "assets/images/app_back_<-.png"),
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          // 2fa
+          Container(
+            height: 45,
+            margin: EdgeInsets.symmetric(horizontal: 20),
+            //color: Colors.blue,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  padding: EdgeInsets.only(left: 15),
+                  //color: Colors.orange,
+                  child: Row(
+                    children: [
+                      Image.asset(
+                          "assets/images/mine_2fa.png"),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Text("Two-factor authentication"),
+                    ],
+                  ),
+                ),
+                Container(
+                  width: 65,
+                  //color: Colors.red,
+                  padding: EdgeInsets.only(right: 15),
+                  child: Obx(() => FlutterSwitch(
+                    width: 50.0,
+                    height: 24.0,
+                    valueFontSize: 12.0,
+                    toggleSize: 20.0,
+                    value: two_aut_on.value,
+                    borderRadius: 30.0,
+                    padding: 2.0,
+                    activeColor: Color(0xffF6F6FB).withOpacity(0.5),// 打开时背景色
+                    inactiveColor: Color(0xff634e68),// 关闭时开关的背景颜色
+                    activeToggleColor: Color(0xff9A4DFF),
+                    showOnOff: false,
+                    onToggle: (val) {
+                      print("二次验证按钮点击");
+
+                      two_aut_on.value = !two_aut_on.value;
+
+                    },
+                  )),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            height: 280,
+            alignment: Alignment.centerLeft,
+            padding: EdgeInsets.symmetric(horizontal: 38),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Mobile", style: CommonStyle.text_16_colorF6F6FB_w400,),
+                Container(
+                  padding: EdgeInsets.zero,
+                  margin: EdgeInsets.zero,
+                  alignment: Alignment.centerLeft,
+                  decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          colors: [Color(0xff47D3FF).withOpacity(0.4),Color(0xff49039C6).withOpacity(0.4),],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight
+                      ),
+                      borderRadius: BorderRadius.all(Radius.circular(8))
+                  ),
+                  child: TextButton(
+                    onPressed: null,
+                    child: Text("+4401***1221", style: CommonStyle.text_14_colorF6F6FB_w400,),
+
+                  ),
+                ),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Email", style: CommonStyle.text_16_colorF6F6FB_w400,),
+                    Image.asset("assets/images/mine_password.png")
+                  ],
+                ),
+                Container(
+                  height: 55,
+                  padding: EdgeInsets.zero,
+                  margin: EdgeInsets.zero,
+                  alignment: Alignment.centerLeft,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/images/mine_tuijian_cell_light.png"),
+                        fit: BoxFit.cover,
+                      ),
+                      borderRadius: BorderRadius.all(Radius.circular(8))
+                  ),
+                  child: TextButton(
+                    onPressed: null,
+                    child: Text("2123**21@gmail.com", style: CommonStyle.text_14_colorF6F6FB_w400,),
+
+                  ),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                GestureDetector(
+                  onTap: (){
+
+                  },
+                  child: Container(
+                    height: 49,
+                    width: double.infinity,
+                    padding: EdgeInsets.symmetric(horizontal: 30),
+                    decoration: const BoxDecoration(
+                        gradient: LinearGradient(
+                            colors: [Color(0xff9A4DFF), Color(0xffF600DD)],
+                            begin: Alignment.topLeft,
+                            end: Alignment.centerRight),
+                        boxShadow: [
+                          //BoxShadow(color: Colors.grey.shade300, blurRadius: 6.0, spreadRadius: 2.0)
+                          BoxShadow(color: Colors.grey, blurRadius: 4, spreadRadius: 2),
+                        ],
+                        borderRadius: BorderRadius.all(Radius.circular(8))),
+                    alignment: Alignment.bottomCenter,
+                    child: TextButton(
+                      onPressed: null,
+                      child: Text(
+                        "Verification successful",
+                        style: CommonStyle.text_14_white,
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           )

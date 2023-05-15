@@ -77,13 +77,15 @@ class _MyRelationshipPageState extends State<MyRelationshipPage> {
                 ],
               ),
             ),
-            ListView.builder(
+            Expanded(
+                flex: 1,
+                child: ListView.builder(
               padding: EdgeInsets.zero,
               itemCount: 10,
               itemBuilder: (BuildContext context, int index) {
                 return getRow(index, isDark_on);
               },
-            ),
+            )),
           ],
         ),
       ),

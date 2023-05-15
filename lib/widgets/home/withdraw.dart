@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:wmbt/widgets/home/withdraw_detail.dart';
 
 import '../../common/style/common_style.dart';
 import '../../common/util/app_tools.dart';
@@ -581,11 +582,12 @@ class _WithdrawPageState extends State<WithdrawPage> {
                                 debugPrint("密码输入完成");
                                 FocusScope.of(context).requestFocus(
                                     _focusNode); // 密码输入完成后，请求焦点并弹起键盘
-                                setState(() {});
+                                setState(() {
+                                  Navigator.push(context, MaterialPageRoute(builder: (BuildContext context){
+                                    return WithdrawDetailPage();
+                                  }));
+                                });
                               },
-                              // onTap: () {
-                              //   print("Pressed");
-                              // },
                               onChanged: (value) {
                                 setState(() {});
                               },
