@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_switch/flutter_switch.dart';
+import 'package:image_picker/image_picker.dart';
 import 'dart:math' as math;
 import '../../common/style/common_style.dart';
 import '../../data/repositories/Theme_cubit.dart';
@@ -19,6 +20,11 @@ class _AccountSettingsPageState extends State<AccountSettingsPage> {
     final double safe_bottom = MediaQuery.of(context).padding.bottom;
     final double safe_tope = MediaQuery.of(context).padding.top;
     bool isDark_on = context.read<ThemeCubit>().isDarkTheme();
+
+    final ImagePicker picker = ImagePicker();
+    XFile? pickImage = XFile("");
+    String headPath = "assets/images/mine_user_head.png";
+    bool chooseFlag = false;
 
     return Material(
       child: Container(
@@ -76,28 +82,49 @@ class _AccountSettingsPageState extends State<AccountSettingsPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text("Avatar", style: CommonStyle.text_14_colorF6F6FB_w400),
-                        Container(
-                          alignment: Alignment.center,
-                          //padding: EdgeInsets.only(top: 10),
-                          child: Stack(
-                            children: [
-                              Image.asset("assets/images/mine_user_head.png"),
-                              Positioned(
-                                left: 10,
-                                bottom: 8,
-                                child: Image.asset("assets/images/mine_password.png"),)
-
-                            ],
+                        Text("Avatar",
+                            style: CommonStyle.text_14_colorF6F6FB_w400),
+                        InkWell(
+                          onTap: () async {
+                            pickImage = await picker.pickImage(
+                                source: ImageSource.gallery);
+                            // headPath = pickImage!.path;
+                            setState(() {
+                              chooseFlag = true;
+                              print(chooseFlag);
+                            });
+                          },
+                          child: Container(
+                            alignment: Alignment.center,
+                            //padding: EdgeInsets.only(top: 10),
+                            child: Stack(
+                              children: [
+                                // Image.asset("assets/images/mine_user_head.png"),
+                                chooseFlag == false
+                                    ? Image.asset(
+                                        "assets/images/mine_user_head.png")
+                                    : Image.network(
+                                        "https://liupai001.oss-cn-shenzhen.aliyuncs.com/goodsv1/%E6%A6%B4%E8%8A%92-1.png"),
+                                Positioned(
+                                  left: 10,
+                                  bottom: 8,
+                                  child: Image.asset(
+                                      "assets/images/mine_password.png"),
+                                )
+                              ],
+                            ),
                           ),
-                        )
+                        ),
                       ],
                     ),
                   ),
                   SizedBox(
                     height: 12,
                   ),
-                  Divider(color: Color(0xff9A4DFF),height: 0.5,)
+                  Divider(
+                    color: Color(0xff9A4DFF),
+                    height: 0.5,
+                  )
                 ],
               ),
             ),
@@ -118,17 +145,22 @@ class _AccountSettingsPageState extends State<AccountSettingsPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text("Alias", style: CommonStyle.text_14_colorF6F6FB_w400),
+                        Text("Alias",
+                            style: CommonStyle.text_14_colorF6F6FB_w400),
                         Container(
                           alignment: Alignment.center,
                           //padding: EdgeInsets.only(top: 10),
                           child: Row(
                             children: [
-                              Text("Quentin Taratino", style: CommonStyle.text_14_colorF6F6FB_w400),
-                              SizedBox(width: 5,),
+                              Text("Quentin Taratino",
+                                  style: CommonStyle.text_14_colorF6F6FB_w400),
+                              SizedBox(
+                                width: 5,
+                              ),
                               Container(
-
-                                child: Image.asset("assets/images/mine_password.png"),)
+                                child: Image.asset(
+                                    "assets/images/mine_password.png"),
+                              )
                             ],
                           ),
                         )
@@ -138,7 +170,10 @@ class _AccountSettingsPageState extends State<AccountSettingsPage> {
                   SizedBox(
                     height: 12,
                   ),
-                  Divider(color: Color(0xff9A4DFF),height: 0.5,)
+                  Divider(
+                    color: Color(0xff9A4DFF),
+                    height: 0.5,
+                  )
                 ],
               ),
             ),
@@ -159,7 +194,8 @@ class _AccountSettingsPageState extends State<AccountSettingsPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text("System theme", style: CommonStyle.text_14_colorF6F6FB_w400),
+                        Text("System theme",
+                            style: CommonStyle.text_14_colorF6F6FB_w400),
                         Container(
                           alignment: Alignment.center,
                           //padding: EdgeInsets.only(top: 10),
@@ -167,10 +203,13 @@ class _AccountSettingsPageState extends State<AccountSettingsPage> {
                             height: 24,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(30),
-                                gradient: LinearGradient(colors: [
-                                  Color.fromARGB(127, 154, 77, 200),
-                                  Color.fromARGB(183, 246, 0, 200)
-                                ], begin: Alignment.topRight, end: Alignment.bottomLeft)),
+                                gradient: LinearGradient(
+                                    colors: [
+                                      Color.fromARGB(127, 154, 77, 200),
+                                      Color.fromARGB(183, 246, 0, 200)
+                                    ],
+                                    begin: Alignment.topRight,
+                                    end: Alignment.bottomLeft)),
                             child: FlutterSwitch(
                               width: 55.0,
                               height: 24.0,
@@ -198,8 +237,12 @@ class _AccountSettingsPageState extends State<AccountSettingsPage> {
                               showOnOff: false,
                               onToggle: (val) {
                                 isDark_on
-                                    ? context.read<ThemeCubit>().switchToLightTheme()
-                                    : context.read<ThemeCubit>().switchToDarkTheme();
+                                    ? context
+                                        .read<ThemeCubit>()
+                                        .switchToLightTheme()
+                                    : context
+                                        .read<ThemeCubit>()
+                                        .switchToDarkTheme();
                               },
                             ),
                           ),
