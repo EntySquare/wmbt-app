@@ -279,6 +279,13 @@ class CommonStyle {
       fontFamily: 'FangZhengHeiTiFanTi',
       decoration: TextDecoration.none);
 
+  static const TextStyle text_16_colorF6F6FB_w400 = TextStyle(
+      color: Color(0xFFF6F6FB),
+      fontSize: 16,
+      fontWeight: FontWeight.w400,
+      fontFamily: 'FangZhengHeiTiFanTi',
+      decoration: TextDecoration.none);
+
   static const TextStyle text_20_colorF6F6FB_w400 = TextStyle(
       color: Color(0xFFF6F6FB),
       fontSize: 20,
