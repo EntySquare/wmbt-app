@@ -17,5 +17,9 @@
     "address": "Address",
     "amount_to_withdraw": "Amount to withdraw",
     "commission_fee": "Commission fee",
-    "balance": "Balance"
+    "balance": "Balance",
+    "all": "All",
+    "unlock": "Unlock",
+    "time_range": "Time Range"
+
 }

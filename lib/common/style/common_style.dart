@@ -52,11 +52,13 @@ class CommonStyle {
       fontFamily: 'FangZhengHeiTiFanTi',
       decoration: TextDecoration.underline);
   static final TextStyle text_16_grey = TextStyle(color: Colors.grey, fontSize: 16);
+  static final TextStyle text_16_grey_underline =
+      TextStyle(color: Colors.grey, fontSize: 16, decoration: TextDecoration.underline);
+
   static final TextStyle text_16_grey_opacity40_underline = TextStyle(
       color: Color(0xFF171930).withOpacity(0.4),
       fontSize: 16,
       fontWeight: FontWeight.w400,
-      fontFamily: 'FangZhengHeiTiFanTi',
       decoration: TextDecoration.underline);
 
   static final TextStyle text_16_white_w400 = TextStyle(
