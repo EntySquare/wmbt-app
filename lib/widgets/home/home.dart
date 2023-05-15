@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:wmbt/common/style/common_style.dart';
 import 'package:wmbt/widgets/home/activities.dart';
+import 'package:wmbt/widgets/home/withdraw.dart';
 import 'package:wmbt/widgets/qrcode/qr_code.dart';
 
 import '../../generated/l10n.dart';
@@ -88,6 +89,11 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                       InkWell(
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context){
+                            return WithdrawPage();
+                          }));
+                        },
                         child: Container(
                           width: 100,
                           height: 50,
