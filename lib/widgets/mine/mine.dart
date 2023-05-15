@@ -1,9 +1,15 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_switch/flutter_switch.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:wmbt/widgets/setI10n/WmbtDropdownButton.dart';
 import 'dart:math' as math;
 import '../../common/style/common_style.dart';
+import '../../common/util/app_tools.dart';
 import '../../data/repositories/Theme_cubit.dart';
 import '../../generated/l10n.dart';
 import '../../utils/gradient_text.dart';
@@ -18,6 +24,11 @@ class Mine extends StatefulWidget {
 }
 
 class _MineState extends State<Mine> {
+
+  late TextEditingController _pinEditingController;
+  late FocusNode _focusNode;
+  final formKey = GlobalKey<FormState>();
+
   @override
   void dispose() {
     super.dispose();
@@ -197,29 +208,39 @@ class _MineState extends State<Mine> {
                                 width: 65,
                                 //color: Colors.brown,
                                 padding: EdgeInsets.only(right: 15),
-                                child: FlutterSwitch(
-                                  width: 50.0,
-                                  height: 24.0,
-                                  valueFontSize: 12.0,
-                                  toggleSize: 20.0,
-                                  value: two_aut_on,
-                                  borderRadius: 30.0,
-                                  padding: 2.0,
-                                  activeColor: two_aut_on?Color(0xff9A4DFF):Color(0xffF6F6FB).withOpacity(0.5),// 打开时背景色
-                                  inactiveColor: Color(0xff634e68),// 关闭时开关的背景颜色
-                                  activeToggleColor: Color(0xff9A4DFF),
-                                  showOnOff: false,
-                                  onToggle: (val) {
-                                    setState(() {
-                                      if (two_aut_on){
-                                        two_aut_on = false;
-                                      }else{
-                                        two_aut_on = true;
-                                      }
-                                    });
-                                    print(two_aut_on);
+                                child: Container(
+                                  height: 24,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(30),
+                                      gradient: LinearGradient(colors: [
+                                        Color.fromARGB(127, 154, 77, 200),
+                                        Color.fromARGB(183, 246, 0, 200)
+                                      ], begin: Alignment.topRight, end: Alignment.bottomLeft)
+                                  ),
+                                  child: FlutterSwitch(
+                                    width: 50.0,
+                                    height: 24.0,
+                                    valueFontSize: 12.0,
+                                    toggleSize: 20.0,
+                                    value: false,
+                                    borderRadius: 30.0,
+                                    padding: 2.0,
+                                    activeColor: two_aut_on?Color(0xff9A4DFF):Color(0xffF6F6FB).withOpacity(0.5),// 打开时背景色
+                                    inactiveColor: Color(0xff634e68),// 关闭时开关的背景颜色
+                                    activeToggleColor: Color(0xff9A4DFF),
+                                    showOnOff: false,
+                                    onToggle: (val) {
+                                      setState(() {
+                                        if (two_aut_on){
+                                          two_aut_on = false;
+                                        }else{
+                                          two_aut_on = true;
+                                        }
+                                      });
+                                      print(two_aut_on);
 
-                                  },
+                                    },
+                                  ),
                                 ),
                               )
                             ],
@@ -297,14 +318,7 @@ class _MineState extends State<Mine> {
                                   activeToggleColor: Color(0xff9A4DFF),
                                   showOnOff: false,
                                   onToggle: (val) {
-                                    setState(() {
-                                      if (two_aut_on){
-                                        two_aut_on = false;
-                                      }else{
-                                        two_aut_on = true;
-                                      }
-                                    });
-                                    print(two_aut_on);
+                                    _getBottomSheetView(2);
 
                                   },
                                 ),
@@ -351,4 +365,180 @@ class _MineState extends State<Mine> {
       ),
     );
   }
+
+  // 根据不同的类型，弹窗
+  _getBottomSheetView(int index) {
+    switch (index) {
+      case 0:
+
+        break;
+      case 1: // 退出登陆
+
+        break;
+      case 2: // 修改支付密码
+      //print("_emptyPsw====>${_emptyPsw}");
+        _pinEditingController = TextEditingController();
+        _focusNode = FocusNode();
+        showModalBottomSheet(
+          context: context,
+          isScrollControlled: true, // 默认情况下有高度限制，设置为true，弹出窗口高度将交给子视图
+          builder: (BuildContext context) {
+            return StatefulBuilder(
+                builder: (BuildContext context, StateSetter setState) {
+                  return Container(
+                    height: (isIPhoneXOrAbove(context))
+                        ? Get.height * 0.515
+                        : Get.height * 0.67,
+                    child: BackdropFilter(
+                      filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
+                        blendMode:BlendMode.colorDodge,
+                      child: GestureDetector(
+                        child: Container(
+                          padding: EdgeInsets.only(top: 30),
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [
+                                Colors.white.withOpacity(1),
+                                Colors.white.withOpacity(1),
+                              ],
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                            ),
+                            image: DecorationImage(
+                              image: AssetImage("assets/images/pop_view_bg.png"),
+                              fit: BoxFit.cover,
+                            ),
+                            borderRadius: BorderRadius.all(Radius.circular(8)),
+                          ),
+                          child: Column(
+                            children: [
+                              Container(
+                                child: Row(
+                                  children: [
+                                    // 返回键
+                                    GestureDetector(
+                                      onTap: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: Container(
+                                        width: 55,
+                                        child: Image.asset(
+                                            "assets/images/app_back_<-.png"),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      flex: 1,
+                                      child: Center(
+                                        child: Text("Please input the verification code"),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              // 密码输入框
+                              Form(
+                                key: formKey,
+                                child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 20.0, horizontal: 20),
+                                    child: PinCodeTextField(
+                                      appContext: context,
+                                      pastedTextStyle: TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                      length: 6,
+                                      obscureText: true,
+                                      obscuringCharacter: '*',
+                                      autoFocus: true, // 自动弹出键盘
+
+                                      //obscuringWidget: const FlutterLogo(
+                                      //  size: 24,
+                                      //),
+                                      blinkWhenObscuring: true,
+                                      animationType: AnimationType.fade,
+                                      validator: (v) {
+                                        if (v!.length < 3) {
+                                          return null;
+                                        } else {
+                                          return null;
+                                        }
+                                      },
+                                      pinTheme: PinTheme(
+                                        shape: PinCodeFieldShape.box,
+                                        //边框颜色
+                                        selectedColor: Colors.white,
+                                        // 输入框选中时边框颜色
+                                        //disabledColor: Colors.orange,
+                                        inactiveColor: Colors.white,
+                                        selectedFillColor: Colors.white,
+                                        // 选中输入框时背景颜色
+                                        inactiveFillColor: Colors.white,
+                                        // 未选中时输入框背景颜色
+                                        activeFillColor: Colors.white,
+                                        activeColor: Colors.white,
+                                        borderRadius: BorderRadius.circular(5),
+                                        fieldHeight: 55,
+                                        fieldWidth: 55,
+                                      ),
+                                      cursorColor: Colors.black,
+                                      animationDuration:
+                                      const Duration(milliseconds: 300),
+                                      enableActiveFill: true,
+                                      //errorAnimationController: errorController,
+                                      controller: _pinEditingController,
+                                      focusNode: _focusNode,
+                                      keyboardType: TextInputType.number,
+                                      boxShadows: const [
+                                        BoxShadow(
+                                          offset: Offset(0, 1),
+                                          color: Colors.black12,
+                                          blurRadius: 10,
+                                        )
+                                      ],
+                                      onCompleted: (v) {
+                                        debugPrint("密码输入完成");
+                                        FocusScope.of(context).requestFocus(
+                                            _focusNode); // 密码输入完成后，请求焦点并弹起键盘
+                                        setState((){
+
+                                        });
+                                      },
+                                      // onTap: () {
+                                      //   print("Pressed");
+                                      // },
+                                      onChanged: (value) {
+                                        setState(() {
+
+                                        });
+                                      },
+                                      beforeTextPaste: (text) {
+                                        debugPrint("允许粘贴 $text");
+                                        //if you return true then it will show the paste confirmation dialog. Otherwise if false, then nothing will happen.
+                                        //but you can show anything you want here, like your pop up saying wrong paste format or etc
+                                        return false;
+                                      },
+                                    )),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                });
+          },
+        ).then((val) {
+          //print("====>高斯模糊背景点击了");
+        });
+        break;
+      case 3: // 谷歌认证
+
+        break;
+      default:
+        break;
+    }
+  }
+
+  
 }
