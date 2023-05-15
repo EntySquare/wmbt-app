@@ -14,5 +14,8 @@
   "locked": "未解锁",
   "unlocked": "已解锁",
   "withdraw": "提现",
+  "address": "地址",
+  "amount_to_withdraw": "提现金额",
+  "commission_fee": "佣金",
   "balance": "余额"
 }

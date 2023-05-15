@@ -14,5 +14,8 @@
     "locked": "Locked",
     "unlocked": "Unlocked",
     "withdraw": "Withdraw",
+    "address": "Address",
+    "amount_to_withdraw": "Amount to withdraw",
+    "commission_fee": "Commission fee",
     "balance": "Balance"
 }

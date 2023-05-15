@@ -190,6 +190,36 @@ class S {
     );
   }
 
+  /// `Address`
+  String get address {
+    return Intl.message(
+      'Address',
+      name: 'address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Amount to withdraw`
+  String get amount_to_withdraw {
+    return Intl.message(
+      'Amount to withdraw',
+      name: 'amount_to_withdraw',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Commission fee`
+  String get commission_fee {
+    return Intl.message(
+      'Commission fee',
+      name: 'commission_fee',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Balance`
   String get balance {
     return Intl.message(
