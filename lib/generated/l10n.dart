@@ -139,6 +139,126 @@ class S {
       args: [],
     );
   }
+
+  /// `Activities`
+  String get activities {
+    return Intl.message(
+      'Activities',
+      name: 'activities',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Balance`
+  String get total_balance {
+    return Intl.message(
+      'Total Balance',
+      name: 'total_balance',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Locked`
+  String get locked {
+    return Intl.message(
+      'Locked',
+      name: 'locked',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unlocked`
+  String get unlocked {
+    return Intl.message(
+      'Unlocked',
+      name: 'unlocked',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Withdraw`
+  String get withdraw {
+    return Intl.message(
+      'Withdraw',
+      name: 'withdraw',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Address`
+  String get address {
+    return Intl.message(
+      'Address',
+      name: 'address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Amount to withdraw`
+  String get amount_to_withdraw {
+    return Intl.message(
+      'Amount to withdraw',
+      name: 'amount_to_withdraw',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Commission fee`
+  String get commission_fee {
+    return Intl.message(
+      'Commission fee',
+      name: 'commission_fee',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Balance`
+  String get balance {
+    return Intl.message(
+      'Balance',
+      name: 'balance',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All`
+  String get all {
+    return Intl.message(
+      'All',
+      name: 'all',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unlock`
+  String get unlock {
+    return Intl.message(
+      'Unlock',
+      name: 'unlock',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Time Range`
+  String get time_range {
+    return Intl.message(
+      'Time Range',
+      name: 'time_range',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

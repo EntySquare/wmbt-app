@@ -11,12 +11,13 @@ import 'generated/l10n.dart';
 import 'package:wmbt/data/repositories/Theme_cubit.dart';
 
 import 'index.dart';
+import 'index2.dart';
 
 class WmbtApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ThemeCubit, ThemeData>(
-        builder: ((context, theme) => MaterialApp(
+        builder: (context, theme) => MaterialApp(
               debugShowCheckedModeBanner: false,
               title: 'Wmbt',
               locale: Provider.of<LanguageProvider>(context).currentLocale,
@@ -40,9 +41,9 @@ class WmbtApp extends StatelessWidget {
               onGenerateRoute: AppNavigator.onGenerateRoute,
               supportedLocales: S.delegate.supportedLocales,
               theme: theme,
-               home: Login(),
+               // home: Login(),
               // home: Home(),
-              //home: MainMenu(),
-            )));
+              home: Index(),
+            ));
   }
 }

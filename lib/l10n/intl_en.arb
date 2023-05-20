@@ -7,5 +7,19 @@
     "step_msg1": "To have a secure and safe journey with us\nPlease verify your identity to complete the registration",
     "step_msg4": "Proof of identity verification successful\nYou’re ready to go!",
     "next": "Next",
-    "register":"Register"
+    "register":"Register",
+
+    "activities": "Activities",
+    "total_balance": "Total Balance",
+    "locked": "Locked",
+    "unlocked": "Unlocked",
+    "withdraw": "Withdraw",
+    "address": "Address",
+    "amount_to_withdraw": "Amount to withdraw",
+    "commission_fee": "Commission fee",
+    "balance": "Balance",
+    "all": "All",
+    "unlock": "Unlock",
+    "time_range": "Time Range"
+
 }

@@ -22,6 +22,13 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "activities": MessageLookupByLibrary.simpleMessage("详情"),
+        "address": MessageLookupByLibrary.simpleMessage("地址"),
+        "all": MessageLookupByLibrary.simpleMessage("全部"),
+        "amount_to_withdraw": MessageLookupByLibrary.simpleMessage("提现金额"),
+        "balance": MessageLookupByLibrary.simpleMessage("余额"),
+        "commission_fee": MessageLookupByLibrary.simpleMessage("佣金"),
+        "locked": MessageLookupByLibrary.simpleMessage("未解锁"),
         "login": MessageLookupByLibrary.simpleMessage("登录"),
         "mobile_number": MessageLookupByLibrary.simpleMessage("手机号码"),
         "next": MessageLookupByLibrary.simpleMessage("下一步"),
@@ -31,6 +38,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "step_msg1":
             MessageLookupByLibrary.simpleMessage("为了与我们有一个安全的旅程\n请验证您的身份以完成注册"),
         "step_msg4": MessageLookupByLibrary.simpleMessage("身份验证成功\n你准备好了!"),
-        "verification_code": MessageLookupByLibrary.simpleMessage("验证码")
+        "time_range": MessageLookupByLibrary.simpleMessage("周期"),
+        "total_balance": MessageLookupByLibrary.simpleMessage("总金额"),
+        "unlock": MessageLookupByLibrary.simpleMessage("解锁"),
+        "unlocked": MessageLookupByLibrary.simpleMessage("已解锁"),
+        "verification_code": MessageLookupByLibrary.simpleMessage("验证码"),
+        "withdraw": MessageLookupByLibrary.simpleMessage("提现")
       };
 }

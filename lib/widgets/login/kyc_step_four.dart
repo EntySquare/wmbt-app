@@ -6,6 +6,7 @@ import '../../common/style/language_dialog.dart';
 import '../../data/repositories/Theme_cubit.dart';
 import '../../generated/l10n.dart';
 import '../../index.dart';
+import '../../index2.dart';
 
 class KycStepFourPage extends StatefulWidget {
   const KycStepFourPage({Key? key}) : super(key: key);
@@ -206,7 +207,7 @@ class _KycStepFourPageState extends State<KycStepFourPage> {
                     GestureDetector(
                       onTap: (){
                         Navigator.push(context, MaterialPageRoute(builder: (BuildContext context){
-                          return MainMenu();
+                          return Index();
                         }));
                       },
                       child: Container(

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wmbt/common/style/common_style.dart';
 
 import '../../data/repositories/Theme_cubit.dart';
+import '../../utils/gradient_text.dart';
 import '../setI10n/WmbtDropdownButton.dart';
 
 class MyRelationshipPage extends StatefulWidget {
@@ -13,10 +14,8 @@ class MyRelationshipPage extends StatefulWidget {
 }
 
 class _MyRelationshipPageState extends State<MyRelationshipPage> {
-
   @override
   Widget build(BuildContext context) {
-
     final double safe_bottom = MediaQuery.of(context).padding.bottom;
     final double safe_tope = MediaQuery.of(context).padding.top;
     bool isDark_on = context.read<ThemeCubit>().isDarkTheme();
@@ -36,7 +35,6 @@ class _MyRelationshipPageState extends State<MyRelationshipPage> {
         child: Column(
           //mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-
             //切换语言
             Container(
               //color: Colors.red,
@@ -61,25 +59,40 @@ class _MyRelationshipPageState extends State<MyRelationshipPage> {
                 ],
               ),
             ),
+            Container(
+              height: 50,
+              padding: EdgeInsets.symmetric(horizontal: 25),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GradientText(
+                    text: "First layer",
+                    gradient: LinearGradient(colors: [Color(0xff9A4DFF), Color(0xffF600DD)]),
+                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.w700, decoration: TextDecoration.underline),
+                  ),
+                  Text(
+                    "Second layer",
+                    style: CommonStyle.text_14_colorF6F6FB_w400_opacity50,
+                  ),
+                ],
+              ),
+            ),
             Expanded(
                 flex: 1,
-                child: Container(
-                  //padding: EdgeInsets.only(top: 8),
-                  child: ListView.builder(
-                    padding: EdgeInsets.zero,
-                    itemCount: 10,
-                    itemBuilder: (BuildContext context, int index) {
-                      return getRow(index, isDark_on);
-                    },),
-                ))
+                child: ListView.builder(
+              padding: EdgeInsets.zero,
+              itemCount: 10,
+              itemBuilder: (BuildContext context, int index) {
+                return getRow(index, isDark_on);
+              },
+            )),
           ],
         ),
       ),
     );
   }
 
-  Widget getRow (index, isDark_on){
-
+  Widget getRow(index, isDark_on) {
     return Container(
       height: 68,
       decoration: BoxDecoration(
@@ -92,19 +105,20 @@ class _MyRelationshipPageState extends State<MyRelationshipPage> {
       ),
       padding: EdgeInsets.only(left: 30),
       child: Row(
-
         children: [
           Expanded(
             flex: 1,
             child: Container(
-            //color: Colors.orange,
-
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
                     alignment: Alignment.center,
-                    child: Image.asset("assets/images/mine_user_head.png", width: 33,height: 33,),
+                    child: Image.asset(
+                      "assets/images/mine_user_head.png",
+                      width: 33,
+                      height: 33,
+                    ),
                   ),
                   Expanded(
                       flex: 1,
@@ -115,14 +129,21 @@ class _MyRelationshipPageState extends State<MyRelationshipPage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text("Andrew", style: CommonStyle.text_14_colorF6F6FB_w400,),
-                            Text("01/02/2023",style: CommonStyle.text_14_colorF6F6FB_w400_opacity50,)
+                            Text(
+                              "Andrew",
+                              style: CommonStyle.text_14_colorF6F6FB_w400,
+                            ),
+                            Text(
+                              "01/02/2023",
+                              style: CommonStyle.text_14_colorF6F6FB_w400_opacity50,
+                            )
                           ],
                         ),
                       ))
                 ],
               ),
-          ),),
+            ),
+          ),
           Container(
             height: 40,
             padding: EdgeInsets.only(right: 40),
@@ -130,8 +151,14 @@ class _MyRelationshipPageState extends State<MyRelationshipPage> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Text("Total Amount Unlocked", style: CommonStyle.text_12_colorF6F6FB_w400_opacity50,),
-                Text("4542WMBT", style: CommonStyle.text_16_white_w400,),
+                Text(
+                  "Total Amount Unlocked",
+                  style: CommonStyle.text_12_colorF6F6FB_w400_opacity50,
+                ),
+                Text(
+                  "4542WMBT",
+                  style: CommonStyle.text_16_white_w400,
+                ),
               ],
             ),
           )
@@ -139,5 +166,4 @@ class _MyRelationshipPageState extends State<MyRelationshipPage> {
       ),
     );
   }
-
 }
